@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127191204) do
+ActiveRecord::Schema.define(version: 20140104182716) do
 
   create_table "issues", force: true do |t|
-    t.string   "companyname"
+    t.string   "company_name"
     t.text     "summary"
-    t.datetime "receiveddate"
-    t.date     "duedate"
+    t.datetime "received_date"
+    t.date     "due_date"
     t.string   "status"
-    t.string   "supporttype"
-    t.string   "assignedto"
+    t.string   "support_type"
+    t.string   "assigned_to"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
