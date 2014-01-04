@@ -18,7 +18,7 @@ class IssuesControllerTest < ActionController::TestCase
 
   test "should create issue" do
     assert_difference('Issue.count') do
-      post :create, issue: { assignedto: @issue.assignedto, companyname: @issue.companyname, duedate: @issue.duedate, receiveddate: @issue.receiveddate, status: @issue.status, summary: @issue.summary, supporttype: @issue.supporttype }
+      post :create, issue: { assigned_to: @issue.assigned_to, company_name: @issue.company_name, due_date: @issue.due_date, received_date: @issue.received_date, status: @issue.status, summary: @issue.summary, support_type: @issue.support_type }
     end
 
     assert_redirected_to issue_path(assigns(:issue))
@@ -35,7 +35,7 @@ class IssuesControllerTest < ActionController::TestCase
   end
 
   test "should update issue" do
-    patch :update, id: @issue, issue: { assignedto: @issue.assignedto, companyname: @issue.companyname, duedate: @issue.duedate, receiveddate: @issue.receiveddate, status: @issue.status, summary: @issue.summary, supporttype: @issue.supporttype }
+    patch :update, id: @issue, issue: { assigned_to: @issue.assigned_to, company_name: @issue.company_name, due_date: @issue.due_date, received_date: @issue.received_date, status: @issue.status, summary: @issue.summary, support_type: @issue.support_type }
     assert_redirected_to issue_path(assigns(:issue))
   end
 

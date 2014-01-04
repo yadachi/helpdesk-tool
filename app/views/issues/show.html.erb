@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Companyname:</strong>
-  <%= @issue.companyname %>
+  <strong>Company name:</strong>
+  <%= @issue.company_name %>
 </p>
 
 <p>
@@ -11,13 +11,13 @@
 </p>
 
 <p>
-  <strong>Receiveddate:</strong>
-  <%= @issue.receiveddate %>
+  <strong>Received date:</strong>
+  <%= @issue.received_date %>
 </p>
 
 <p>
-  <strong>Duedate:</strong>
-  <%= @issue.duedate %>
+  <strong>Due date:</strong>
+  <%= @issue.due_date %>
 </p>
 
 <p>
@@ -26,13 +26,13 @@
 </p>
 
 <p>
-  <strong>Supporttype:</strong>
-  <%= @issue.supporttype %>
+  <strong>Support type:</strong>
+  <%= @issue.support_type %>
 </p>
 
 <p>
-  <strong>Assignedto:</strong>
-  <%= @issue.assignedto %>
+  <strong>Assigned to:</strong>
+  <%= @issue.assigned_to %>
 </p>
 
 <%= link_to 'Edit', edit_issue_path(@issue) %> |

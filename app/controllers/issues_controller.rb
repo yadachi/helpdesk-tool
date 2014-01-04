@@ -69,6 +69,6 @@ class IssuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def issue_params
-      params.require(:issue).permit(:companyname, :summary, :receiveddate, :duedate, :status, :supporttype, :assignedto)
+      params.require(:issue).permit(:company_name, :summary, :received_date, :due_date, :status, :support_type, :assigned_to)
     end
 end

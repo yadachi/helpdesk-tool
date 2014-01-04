@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  companyname: MyString
+  company_name: MyString
   summary: MyText
-  receiveddate: 2013-11-27 19:12:04
-  duedate: 2013-11-27
+  received_date: 2014-01-04 18:27:16
+  due_date: 2014-01-04
   status: MyString
-  supporttype: MyString
-  assignedto: MyString
+  support_type: MyString
+  assigned_to: MyString
 
 two:
-  companyname: MyString
+  company_name: MyString
   summary: MyText
-  receiveddate: 2013-11-27 19:12:04
-  duedate: 2013-11-27
+  received_date: 2014-01-04 18:27:16
+  due_date: 2014-01-04
   status: MyString
-  supporttype: MyString
-  assignedto: MyString
+  support_type: MyString
+  assigned_to: MyString
