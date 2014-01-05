@@ -1,0 +1,52 @@
+#banner {
+	background: #2B509B;
+	padding: 10px;
+	border-bottom: 2px solid;
+	font: 25px "Courier", serif;
+	color: #FFFFFF;
+	text-align: left;
+
+	img {
+		float: left;
+	} 
+	#navbar {
+		float: top;
+		padding: 1em 2em;
+		width: 200em;
+		background: #2B509B;
+
+		ul {
+			padding: 0;
+			position: fixed;
+			margin: -10px;
+
+			li {
+				list-style: none;
+				display:inline;
+
+
+				a {
+					color: white;
+					font-size: small;
+				}
+			}
+		}
+	}
+}
+
+#notice {
+	color: #000 !important;
+	border: 2px solid red;
+	padding: 1em;
+	margin-bottom: 2em;
+	background-color: #f0f0f0;
+	font: bold smaller sans-serif;
+}
+
+#main {
+//background: #2B509B;
+	margin-left: 10em;
+	padding: 1em;
+	background: white;
+}
+
