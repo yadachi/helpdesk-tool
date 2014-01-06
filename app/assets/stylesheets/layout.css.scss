@@ -1,5 +1,5 @@
-#banner {
-	background: #2B509B;
+#header {
+	background: rgb(32, 80, 129);
 	padding: 10px;
 	border-bottom: 2px solid;
 	font: 25px "Courier", serif;
@@ -8,12 +8,13 @@
 
 	img {
 		float: left;
+		margin-right: 10px;
 	} 
 	#navbar {
 		float: top;
 		padding: 1em 2em;
-		width: 200em;
-		background: #2B509B;
+		width: 50em;
+		background: rgb(32, 80, 129);
 
 		ul {
 			padding: 0;
@@ -22,13 +23,20 @@
 
 			li {
 				list-style: none;
-				display:inline;
+				display: inline;
 
 
 				a {
 					color: white;
-					font-size: small;
+					font-size: medium;
 				}
+				a:hover {
+					background: rgb(59, 115, 175);
+				}
+				a.selected {
+					background: #fff;
+					color: #555;
+			 	}
 			}
 		}
 	}
