@@ -6,9 +6,22 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body class="<%= controller.controller_name %>">
+	<div id="header">
+		<%= image_tag("logo.png") %>
+		<%= @page_title || "SCS Helpdesk" %>
+		<div id="navbar">
+			<ul>
+				<li><a href="http://...">Home</a></li>
+				<li><a href="http://...">New Issue</a></li>
+				<li><a href="http://...">Company</a></li>
+				<li><a href="http://...">Option</a></li>
+				<li><a href="http://...">About</a></li>
+		  </ul>
+		</div>
+	</div>
+	<div id="main">
+		<%= yield %>
+	</div>
 </body>
 </html>

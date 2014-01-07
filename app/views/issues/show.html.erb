@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @issue.company_name %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @issue.summary %>
+</p>
+
+<p>
+  <strong>Received date:</strong>
+  <%= @issue.received_date %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @issue.due_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @issue.status %>
+</p>
+
+<p>
+  <strong>Support type:</strong>
+  <%= @issue.support_type %>
+</p>
+
+<p>
+  <strong>Assigned to:</strong>
+  <%= @issue.assigned_to %>
+</p>
+
+<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %>

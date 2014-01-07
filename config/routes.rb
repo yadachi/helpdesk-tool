@@ -1,4 +1,6 @@
 Helpdesk::Application.routes.draw do
+  resources :issues
+
   get "say/hello"
   get "say/goodbye"
   # The priority is based upon order of creation: first created -> highest priority.
