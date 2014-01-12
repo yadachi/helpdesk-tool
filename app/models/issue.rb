@@ -1,3 +1,6 @@
 class Issue < ActiveRecord::Base
-  validates :company_name, :summary, presence: true
+	belongs_to :companies
+
+	validates_presence_of :companies
+  validates :summary, presence: true
 end
