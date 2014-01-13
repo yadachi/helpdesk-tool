@@ -5,6 +5,7 @@ class IssuesController < ApplicationController
   # GET /issues.json
   def index
     @issues = Issue.all
+    #company = Company.find(params[:id])
   end
 
   # GET /issues/1
