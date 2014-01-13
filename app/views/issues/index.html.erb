@@ -19,7 +19,7 @@
   <tbody>
     <% @issues.each do |issue| %>
       <tr>
-        <td><%= company.name %></td>
+        <td><%= issue.company.name %></td>
         <td><%= issue.summary %></td>
         <td><%= issue.received_date %></td>
         <td><%= issue.due_date %></td>
