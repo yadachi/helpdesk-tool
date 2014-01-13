@@ -1,4 +1,4 @@
 class Company < ActiveRecord::Base
-	has_many :issues
+  has_many :issues
 	
 end
