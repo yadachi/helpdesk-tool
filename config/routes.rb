@@ -1,7 +1,11 @@
 Helpdesk::Application.routes.draw do
   resources :companies
 
+<<<<<<< HEAD
   resources :issues
+=======
+  resources :issues, :about, :option, :maintenance
+>>>>>>> remotes/team_mak/helpdesk/master
 
   get "say/hello"
   get "say/goodbye"

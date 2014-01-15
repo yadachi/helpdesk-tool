@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140112193206) do
 
   create_table "companies", force: true do |t|
@@ -18,6 +19,15 @@ ActiveRecord::Schema.define(version: 20140112193206) do
     t.text     "address"
     t.string   "phone",      limit: 20
     t.string   "fax",        limit: 20
+=======
+ActiveRecord::Schema.define(version: 20140108125242) do
+
+  create_table "companies", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "telno"
+    t.boolean  "delflg"
+>>>>>>> remotes/team_mak/helpdesk/master
     t.datetime "created_at"
     t.datetime "updated_at"
   end
