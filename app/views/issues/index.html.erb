@@ -19,11 +19,7 @@
   <tbody>
     <% @issues.each do |issue| %>
       <tr>
-<<<<<<< HEAD
-        <td><%= issue.company.name %></td>
-=======
         <td><%= link_to issue.company_name, issue %></td>
->>>>>>> remotes/team_mak/helpdesk/master
         <td><%= issue.summary %></td>
         <td><%= issue.received_date %></td>
         <td><%= issue.due_date %></td>

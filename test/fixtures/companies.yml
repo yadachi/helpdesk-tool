@@ -2,17 +2,6 @@
 
 one:
   name: MyString
-<<<<<<< HEAD
-  address: MyText
-  phone: MyString
-  fax: MyString
-
-two:
-  name: MyString
-  address: MyText
-  phone: MyString
-  fax: MyString
-=======
   address: MyString
   telno: MyString
   delflg: false
@@ -22,4 +11,3 @@ two:
   address: MyString
   telno: MyString
   delflg: false
->>>>>>> remotes/team_mak/helpdesk/master
