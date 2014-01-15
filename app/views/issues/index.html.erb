@@ -1,6 +1,6 @@
 <h1>Listing issues</h1>
 
-<table>
+<table border="1">
   <thead>
     <tr>
       <th>Company name</th>
@@ -19,7 +19,7 @@
   <tbody>
     <% @issues.each do |issue| %>
       <tr>
-        <td><%= issue.company_name %></td>
+        <td><%= link_to issue.company_name, issue %></td>
         <td><%= issue.summary %></td>
         <td><%= issue.received_date %></td>
         <td><%= issue.due_date %></td>
