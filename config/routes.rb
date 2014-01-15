@@ -1,5 +1,7 @@
 Helpdesk::Application.routes.draw do
-  resources :issues
+  resources :companies
+
+  resources :issues, :about, :option, :maintenance
 
   get "say/hello"
   get "say/goodbye"
