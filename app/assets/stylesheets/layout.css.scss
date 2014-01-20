@@ -18,8 +18,7 @@
 
 		ul {
 			padding: 0;
-			position: fixed;
-			margin: -10px;
+		  margin: -10px;
 
 			li {
 				list-style: none;
@@ -52,9 +51,15 @@
 }
 
 #main {
-//background: #2B509B;
 	margin-left: 10em;
 	padding: 1em;
 	background: white;
 }
-
+body {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	color: #484848;
+	margin: 0;
+	padding: 0;
+	min-width: 900px;
+}
