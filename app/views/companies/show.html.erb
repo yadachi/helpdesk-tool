@@ -1,9 +1,11 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
+<% end %>
 
-<p>
-  <strong>Name:</strong>
+<h2>
+  <!-- <strong>Name:</strong> -->
   <%= @company.name %>
-</p>
+</h2>
 
 <p>
   <strong>Address:</strong>
@@ -20,6 +22,7 @@
   <%= @company.delflg %>
 </p>
 
+<h3>Customer list</h3>
 <table>
   <thead>
     <tr>
