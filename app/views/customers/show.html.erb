@@ -20,5 +20,10 @@
   <%= @customer.email %>
 </p>
 
+<p>
+  <strong>Company id:</strong>
+  <%= @customer.company_id %>
+</p>
+
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>

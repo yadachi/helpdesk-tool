@@ -1,9 +1,11 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
+<% end %>
 
-<p>
-  <strong>Name:</strong>
+<h2>
+  <!-- <strong>Name:</strong> -->
   <%= @company.name %>
-</p>
+</h2>
 
 <p>
   <strong>Address:</strong>
@@ -20,5 +22,35 @@
   <%= @company.delflg %>
 </p>
 
+<h3>Customer list</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Name</th>
+      <th>Direct number</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @company.customers.each do |customer| %>
+      <tr>
+        <td><%= customer.title %></td>
+        <td><%= customer.name %></td>
+        <td><%= customer.direct_number %></td>
+        <td><%= customer.email %></td>
+        <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
