@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108125242) do
+ActiveRecord::Schema.define(version: 20140117124905) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
     t.string   "address"
     t.string   "telno"
     t.boolean  "delflg"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "customers", force: true do |t|
+    t.string   "title",         limit: 10
+    t.string   "name",          limit: 60
+    t.string   "direct_number", limit: 20
+    t.string   "email",         limit: 60
     t.datetime "created_at"
     t.datetime "updated_at"
   end
