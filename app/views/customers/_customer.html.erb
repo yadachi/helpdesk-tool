@@ -1,5 +1,4 @@
-<div id="content">
-<h1>Customer List</h1>
+<h3>Customer list</h3>
 
 <table class="list">
   <thead>
@@ -16,7 +15,6 @@
   </thead>
 
   <tbody>
-    <% @customers.each do |customer| %>
       <tr class="<%= cycle('odd', 'even') %>" >
         <td><%= customer.title %></td>
         <td><%= customer.name %></td>
@@ -27,10 +25,5 @@
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
         <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
-
-<br>
-</div>
-<%= link_to 'New Customer', new_customer_path %>
