@@ -1,9 +1,15 @@
 Helpdesk::Application.routes.draw do
+  resources :users
   resources :customers
-
   resources :companies
-
   resources :issues, :about, :option, :maintenance
+  resources :logins
+
+  controller :logins do
+    get 'login' => :show
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
 
   get "say/hello"
   get "say/goodbye"
