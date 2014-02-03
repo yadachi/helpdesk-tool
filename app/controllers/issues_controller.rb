@@ -1,5 +1,6 @@
 class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
+  before_filter :check_logined
 
   # GET /issues
   # GET /issues.json

@@ -1,0 +1,21 @@
+<h1>Login Page</h1>
+
+<!-- Show flash message (in case of login error) -->
+<p><font color="red"><%= flash[:alert] %></font></p>
+<%= form_tag logins_path do %>
+	<table id="login_form">
+		<tr>
+			<td><%= label_tag :user_id, 'User ID' %></td>
+			<td><%= text_field_tag :user_id, params[:user_id] %></td>
+		</tr>
+
+		<tr>
+			<td><%= label_tag :pass, 'Password' %></td>
+			<td><%= password_field_tag :pass, params[:pass] %></td>
+		</tr>
+
+		<tr>
+			<td><%= submit_tag "Login" %></td>
+		</tr>
+	</table>
+<% end %>

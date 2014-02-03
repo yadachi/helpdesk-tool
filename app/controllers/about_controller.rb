@@ -1,5 +1,6 @@
 class AboutController < ApplicationController
-
+  before_filter :check_logined
+  
   def index
   end
 

@@ -1,0 +1,10 @@
+Issues Scaffold
+rails g scaffold issue companyname:string summary:text receiveddate:datetime duedate:date status:string type:string assignedto:string
+
+Users Scaffold
+rails g scaffold user userid:string password_digest:string name:string level:integer accountlockflg:boolean delflg:boolean
+
+# User Generate
+rails c
+User.create!(:userid => "admin", :password => "test", :password_confirmation => "test", :name => "Admin User", :level => "99", :accountlockflg => "false", :delflg => "false")
+exit
