@@ -70,6 +70,6 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:userid, :password_digest, :name, :level, :accountlockflg, :delflg)
+      params.require(:user).permit(:userid, :password, :password_confirmation, :name, :level, :accountlockflg, :delflg)
     end
 end
