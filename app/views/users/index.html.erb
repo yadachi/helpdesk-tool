@@ -4,11 +4,7 @@
   <thead>
     <tr>
       <th>Userid</th>
-      <th>Password digest</th>
       <th>Name</th>
-      <th>Level</th>
-      <th>Accountlockflg</th>
-      <th>Delflg</th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,11 +15,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.userid %></td>
-        <td><%= user.password_digest %></td>
         <td><%= user.name %></td>
-        <td><%= user.level %></td>
-        <td><%= user.accountlockflg %></td>
-        <td><%= user.delflg %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

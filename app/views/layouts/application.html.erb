@@ -18,6 +18,13 @@
 				<li><a href="http://localhost:3000/maintenance/">Maintenance</a></li>
 				<li><a href="http://localhost:3000/option/">Option</a></li>
 				<li><a href="http://localhost:3000/about/">About</a></li>
+				<li>
+					<% if session[:user_id] == nil %>
+					<%= link_to "Login", logins_path %>
+					<% else %>
+					<%= link_to "Logout", logout_path, confirm: 'Are you sure?', method: :delete %>
+					<% end %>
+				</li>
 			</ul>
 		</div>
 	</div>
