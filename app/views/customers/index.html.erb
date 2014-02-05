@@ -16,7 +16,9 @@
   </thead>
 
   <tbody>
+    <% @customers.each do |customer| %>
     <%= render customer %>
+    <% end %>
   </tbody>
 </table>
 
