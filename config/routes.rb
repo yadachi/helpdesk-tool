@@ -1,4 +1,6 @@
 Helpdesk::Application.routes.draw do
+  resources :activities
+
   resources :users
   resources :customers
   resources :companies
