@@ -1,5 +1,7 @@
+<div id="content">
+<% if notice %>
 <p id="notice"><%= notice %></p>
-
+<% end %>
 <p>
   <strong>Title:</strong>
   <%= @customer.title %>
@@ -24,6 +26,8 @@
   <strong>Company id:</strong>
   <%= @customer.company_id %>
 </p>
+
+</div>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
