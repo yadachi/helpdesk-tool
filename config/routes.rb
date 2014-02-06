@@ -1,20 +1,24 @@
 Helpdesk::Application.routes.draw do
-  resources :activities
 
-  resources :users
-  resources :customers
-  resources :companies
-  resources :issues, :about, :option, :maintenance
+# Fundamental Functions
   resources :logins
-
   controller :logins do
     get 'login' => :show
     post 'login' => :create
     delete 'logout' => :destroy
   end
 
-  get "say/hello"
-  get "say/goodbye"
+# Engineers' Functions
+  resources :issues, :activities
+
+# Sales Functions
+  resources :analysis, :reporting
+
+# Administration/Maintenance Functions
+  resources :maintenance
+  resources :users, :customers, :companies
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
