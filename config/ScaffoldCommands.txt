@@ -1,10 +1,31 @@
-Issues Scaffold
+####### Basic Commands ####################
+
+# To delete scaffold
+rails destroy scaffold <Scaffold Name>
+
+############################################
+
+####### Scaffold Generate Commands #######
+
+# Issues Scaffold
 rails g scaffold issue companyname:string summary:text receiveddate:datetime duedate:date status:string type:string assignedto:string
 
-Users Scaffold
+# Users Scaffold
 rails g scaffold user userid:string password_digest:string name:string level:integer accountlockflg:boolean delflg:boolean
+
+# Activities Scaffold
+rails g scaffold activity issue_id:integer date_time:datetime activity_type:integer activity_note:string hours:integer minutes:integer entered_by:integer
+
+############################################
+
+######## Others ############################
 
 # User Generate
 rails c
 User.create!(:userid => "admin", :password => "test", :password_confirmation => "test", :name => "Admin User", :level => "99", :accountlockflg => "false", :delflg => "false")
 exit
+
+# Add Email to Users Table
+rails generate migration AddEmailToUsers email:string
+
+############################################

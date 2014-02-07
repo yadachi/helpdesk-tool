@@ -1,10 +1,12 @@
-<h1>Listing users</h1>
+<div id="content">
+<h1>User List</h1>
 
-<table>
+<table class="list">
   <thead>
     <tr>
-      <th>Userid</th>
+      <th>User ID</th>
       <th>Name</th>
+      <th>Email</th>
       <th></th>
       <th></th>
       <th></th>
@@ -13,9 +15,10 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr class="<%= cycle('odd', 'even') %>">
         <td><%= user.userid %></td>
         <td><%= user.name %></td>
+        <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,5 +28,6 @@
 </table>
 
 <br>
-
 <%= link_to 'New User', new_user_path %>
+
+</div>

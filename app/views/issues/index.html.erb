@@ -1,6 +1,7 @@
-<h1>Listing issues</h1>
+<div id="content">
+<h1>Issue List</h1>
 
-<table border="1">
+<table class="list">
   <thead>
     <tr>
       <th>Company name</th>
@@ -18,7 +19,7 @@
 
   <tbody>
     <% @issues.each do |issue| %>
-      <tr>
+      <tr  class="<%= cycle('odd', 'even') %>">
         <td><%= link_to issue.company_name, issue %></td>
         <td><%= issue.summary %></td>
         <td><%= issue.received_date %></td>

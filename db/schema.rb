@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127123713) do
+ActiveRecord::Schema.define(version: 20140205130334) do
+
+  create_table "activities", force: true do |t|
+    t.integer  "issue_id"
+    t.datetime "date_time"
+    t.integer  "activity_type"
+    t.string   "activity_note"
+    t.integer  "hours"
+    t.integer  "minutes"
+    t.integer  "entered_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -53,6 +65,7 @@ ActiveRecord::Schema.define(version: 20140127123713) do
     t.boolean  "delflg"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
 end
