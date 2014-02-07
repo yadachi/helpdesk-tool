@@ -1,4 +1,4 @@
-class AboutController < ApplicationController
+class AnalysisController < ApplicationController
   before_filter :check_logined
   
   def index
