@@ -35,5 +35,38 @@
   <%= @issue.assigned_to %>
 </p>
 
+<div>
+  <h3>Activity List</h3>
+
+  <table class="list">
+    <thead>
+      <tr>
+        <th>Activity ID</th>
+        <th>Date\/Time</th>
+        <th>Activity Type</th>
+        <th>Activity Note</th>
+        <th>Hours</th>
+        <th>Minutes</th>
+        <th>Entered By</th>
+    </thead>
+    <tbody>
+      <% @issue.activities.each do |activity| %>
+      <tr>
+        <td><%= activity.id %></td>
+        <td><%= activity.date_time %></td>
+        <td><%= activity.activity_type %></td>
+        <td><%= activity.activity_note %></td>
+        <td><%= activity.hours %></td>
+        <td><%= activity.minutes %></td>
+        <td><%= activity.entered_by %></td>
+        <td><%= link_to 'Show', activity %></td>
+        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 <%= link_to 'Edit', edit_issue_path(@issue) %> |
 <%= link_to 'Back', issues_path %>
