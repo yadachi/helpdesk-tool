@@ -4,11 +4,11 @@
 <table class="list">
   <thead>
     <tr>
+      <th>Company Name</td>
       <th>Title</th>
       <th>Name</th>
-      <th>Direct number</th>
-      <th>Email</th>
-      <th>Company id</td>
+      <th>Direct Number</th>
+      <th>Email Address</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,7 +17,16 @@
 
   <tbody>
     <% @customers.each do |customer| %>
-    <%= render customer %>
+    <tr class="<%= cycle('odd', 'even') %>" >
+        <td><%= customer.company_id %></td>
+        <td><%= customer.title %></td>
+        <td><%= customer.name %></td>
+        <td><%= customer.direct_number %></td>
+        <td><%= customer.email %></td>
+        <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
