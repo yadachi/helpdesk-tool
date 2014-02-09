@@ -16,6 +16,9 @@ rails g scaffold user userid:string password_digest:string name:string level:int
 # Activities Scaffold
 rails g scaffold activity issue_id:integer date_time:datetime activity_type:integer activity_note:string hours:integer minutes:integer entered_by:integer
 
+# Locations Scaffold
+rails g scaffold location name:string address_1:string address_2:string city:string county:string postcode:string country:string
+
 ############################################
 
 ######## Others ############################
@@ -27,5 +30,12 @@ exit
 
 # Add Email to Users Table
 rails generate migration AddEmailToUsers email:string
+
+# Add Location_id to customers table
+rails generate migration add_location_id_and_main_contact_to_customers location_id:integer main_contact:boolean
+
+# rename address column in companies
+rails genrate migration fix_column_in_companies
+(edit migration file manually. use change_table to add/remove/rename column in companies)
 
 ############################################
