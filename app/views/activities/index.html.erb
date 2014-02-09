@@ -1,25 +1,28 @@
-<h1>Listing activities</h1>
+<div id="content">
+  <h1>Listing activities</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Issue</th>
-      <th>Date time</th>
-      <th>Activity type</th>
-      <th>Activity note</th>
-      <th>Hours</th>
-      <th>Minutes</th>
-      <th>Entered by</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @activities.each do |activity| %>
+  <table class="list">
+    <thead>
       <tr>
+        <th>Related Issue ID</th>
+        <th>Activity ID</th>
+        <th>Date/Time</th>
+        <th>Activity type</th>
+        <th>Activity note</th>
+        <th>Hours</th>
+        <th>Minutes</th>
+        <th>Entered by</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @activities.each do |activity| %>
+      <tr class="<%= cycle('odd', 'even') %>">
         <td><%= activity.issue_id %></td>
+        <td><%= activity.activity_id %></td>
         <td><%= activity.date_time %></td>
         <td><%= activity.activity_type %></td>
         <td><%= activity.activity_note %></td>
@@ -30,10 +33,9 @@
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Activity', new_activity_path %>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Activity', new_activity_path %>
+</div>
