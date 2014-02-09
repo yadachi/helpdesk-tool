@@ -10,6 +10,7 @@
       <th>County</th>
       <th>Postcode</th>
       <th>Country</th>
+      <th>Company</th>
       <th></th>
       <th></th>
       <th></th>
@@ -26,6 +27,7 @@
         <td><%= location.county %></td>
         <td><%= location.postcode %></td>
         <td><%= location.country %></td>
+        <td><%= location.company_id %></td>
         <td><%= link_to 'Show', location %></td>
         <td><%= link_to 'Edit', edit_location_path(location) %></td>
         <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -8,6 +8,7 @@ one:
   county: MyString
   postcode: MyString
   country: MyString
+  company_id: 1
 
 two:
   name: MyString
@@ -17,3 +18,4 @@ two:
   county: MyString
   postcode: MyString
   country: MyString
+  company_id: 1

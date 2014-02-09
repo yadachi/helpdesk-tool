@@ -8,6 +8,7 @@ class CreateLocations < ActiveRecord::Migration
       t.string :county
       t.string :postcode
       t.string :country
+      t.integer :company_id
 
       t.timestamps
     end
