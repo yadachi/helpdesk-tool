@@ -28,6 +28,16 @@
   <%= @customer.email %>
 </p>
 
+<p>
+  <strong>Main Contact:</strong>
+  <%= @customer.main_contact %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @customer.location_id %>
+</p>
+
 </div>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
