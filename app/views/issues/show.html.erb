@@ -1,39 +1,92 @@
-<p id="notice"><%= notice %></p>
+<div id="content">
 
-<p>
-  <strong>Company name:</strong>
-  <%= @issue.company_name %>
-</p>
+  <% if notice %>
+  <p id="notice"><%= notice %></p>
+  <% end %>
 
-<p>
-  <strong>Summary:</strong>
-  <%= @issue.summary %>
-</p>
+  <p>
+    <strong>Company name:</strong>
+    <%= @issue.company_name %>
+  </p>
 
-<p>
-  <strong>Received date:</strong>
-  <%= @issue.received_date %>
-</p>
+  <p>
+    <strong>Summary:</strong>
+    <%= @issue.summary %>
+  </p>
 
-<p>
-  <strong>Due date:</strong>
-  <%= @issue.due_date %>
-</p>
+  <p>
+    <strong>Received date:</strong>
+    <%= @issue.received_date %>
+  </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @issue.status %>
-</p>
+  <p>
+    <strong>Due date:</strong>
+    <%= @issue.due_date %>
+  </p>
 
-<p>
-  <strong>Support type:</strong>
-  <%= @issue.support_type %>
-</p>
+  <p>
+    <strong>Status:</strong>
+    <%= @issue.status %>
+  </p>
 
-<p>
-  <strong>Assigned to:</strong>
-  <%= @issue.assigned_to %>
-</p>
+  <p>
+    <strong>Support type:</strong>
+    <%= @issue.support_type %>
+  </p>
 
-<%= link_to 'Edit', edit_issue_path(@issue) %> |
-<%= link_to 'Back', issues_path %>
+  <p>
+    <strong>Assigned to:</strong>
+    <%= @issue.assigned_to %>
+  </p>
+  <%= link_to 'Edit', edit_issue_path(@issue) %> |
+  <%= link_to 'Back', issues_path %>
+  <br>
+  <br>
+
+<%
+###### Activity List Area #####################################################################
+%>
+
+  <div>
+    <h3>Activity List</h3>
+    <p align="right">
+      <%= link_to 'Add Activity', new_activity_path %>
+    </p>
+
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Activity ID</th>
+          <th>Date/Time</th>
+          <th>Activity Type</th>
+          <th>Activity Note</th>
+          <th>Hours</th>
+          <th>Minutes</th>
+          <th>Entered By</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @issue.activities.each do |activity| %>
+          <tr class="<%= cycle('odd', 'even') %>">
+            <td><%= activity.activity_id %></td>
+            <td><%= activity.date_time %></td>
+            <td><%= activity.activity_type %></td>
+            <td><%= activity.activity_note %></td>
+            <td><%= activity.hours %></td>
+            <td><%= activity.minutes %></td>
+            <td><%= activity.entered_by %></td>
+            <td><%= link_to 'Show', activity %></td>
+            <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+            <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <br>
+    <br>
+    <br>
+  </div>
+
+</div>

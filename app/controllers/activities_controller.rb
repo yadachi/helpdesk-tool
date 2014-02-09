@@ -25,7 +25,26 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
-    @activity = Activity.new(activity_params)
+    # Get max activity number
+    current_activity_number = Activity.maximum(:activity_id, :conditions => ["issue_id = ?", activity_params[:issue_id]])
+
+    # Set next activity number
+    if current_activity_number
+      next_activity_number = current_activity_number + 1
+    else
+      next_activity_number = 1
+    end
+
+    # Create new Activity object
+    @activity = Activity.new
+    @activity.issue_id      = activity_params[:issue_id]
+    @activity.activity_id   = next_activity_number
+    @activity.date_time     = activity_params[:date_time]
+    @activity.activity_type = activity_params[:activity_type]
+    @activity.activity_note = activity_params[:activity_note]
+    @activity.hours         = activity_params[:hours]
+    @activity.minutes       = activity_params[:minutes]
+    @activity.entered_by    = activity_params[:entered_by]
 
     respond_to do |format|
       if @activity.save
@@ -70,6 +89,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:issue_id, :date_time, :activity_type, :activity_note, :hours, :minutes, :entered_by)
+      params.require(:activity).permit(:issue_id, :activity_id, :date_time, :activity_type, :activity_note, :hours, :minutes, :entered_by)
     end
 end
