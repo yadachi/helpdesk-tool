@@ -31,6 +31,9 @@ exit
 # Add Email to Users Table
 rails generate migration AddEmailToUsers email:string
 
+# Add Activity ID to Activity Table
+rails generate migration AddActivityIDToActivities activity_id:integer
+
 # Add Location_id to customers table
 rails generate migration add_location_id_and_main_contact_to_customers location_id:integer main_contact:boolean
 

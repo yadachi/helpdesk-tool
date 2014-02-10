@@ -1,25 +1,25 @@
 <div id="content">
-<h1>Issue List</h1>
+  <h1>Issue List</h1>
 
-<table class="list">
-  <thead>
-    <tr>
-      <th>Company name</th>
-      <th>Summary</th>
-      <th>Received date</th>
-      <th>Due date</th>
-      <th>Status</th>
-      <th>Support type</th>
-      <th>Assigned to</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>Company name</th>
+        <th>Summary</th>
+        <th>Received date</th>
+        <th>Due date</th>
+        <th>Status</th>
+        <th>Support type</th>
+        <th>Assigned to</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @issues.each do |issue| %>
-      <tr  class="<%= cycle('odd', 'even') %>">
+    <tbody>
+      <% @issues.each do |issue| %>
+      <tr class="<%= cycle('odd', 'even') %>">
         <td><%= link_to issue.company_name, issue %></td>
         <td><%= issue.summary %></td>
         <td><%= issue.received_date %></td>
@@ -31,10 +31,10 @@
         <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
         <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Issue', new_issue_path %>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Issue', new_issue_path %>
+  
+</div>
