@@ -5,9 +5,10 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Address</th>
-      <th>Telno</th>
-      <th>Delflg</th>
+      <th>location</th>
+      <th>main phone</th>
+      <th>fax number</th>
+      <th>Deleted</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,9 +19,10 @@
     <% @companies.each do |company| %>
       <tr class="<%= cycle('odd', 'even') %>">
         <td><%= company.name %></td>
-        <td><%= company.address %></td>
-        <td><%= company.telno %></td>
-        <td><%= company.delflg %></td>
+        <td><%= company.location_id %></td>
+        <td><%= company.main_phone %></td>
+        <td><%= company.fax %></td>
+        <td><%= company.is_deleted %></td>
         <td><%= link_to 'Show', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
         <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>

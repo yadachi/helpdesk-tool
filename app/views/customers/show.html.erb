@@ -2,6 +2,12 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
+
+<p>
+  <strong>Company Name:</strong>
+  <%= Company.find(@customer.company_id).name %>
+</p>
+
 <p>
   <strong>Title:</strong>
   <%= @customer.title %>
@@ -23,8 +29,13 @@
 </p>
 
 <p>
-  <strong>Company id:</strong>
-  <%= @customer.company_id %>
+  <strong>Main Contact:</strong>
+  <%= @customer.main_contact %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @customer.location_id %>
 </p>
 
 </div>
