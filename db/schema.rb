@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207231232) do
+ActiveRecord::Schema.define(version: 20140209225604) do
 
   create_table "activities", force: true do |t|
     t.integer  "issue_id"
@@ -28,11 +28,12 @@ ActiveRecord::Schema.define(version: 20140207231232) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
-    t.string   "address"
-    t.string   "telno"
-    t.boolean  "delflg"
+    t.string   "main_phone"
+    t.boolean  "is_deleted"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "location_id"
+    t.string   "fax"
   end
 
   create_table "customers", force: true do |t|
@@ -43,6 +44,8 @@ ActiveRecord::Schema.define(version: 20140207231232) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"
+    t.integer  "location_id"
+    t.boolean  "main_contact"
   end
 
   create_table "issues", force: true do |t|
@@ -53,6 +56,19 @@ ActiveRecord::Schema.define(version: 20140207231232) do
     t.string   "status"
     t.string   "support_type"
     t.string   "assigned_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.string   "name"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "county"
+    t.string   "postcode"
+    t.string   "country"
+    t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
