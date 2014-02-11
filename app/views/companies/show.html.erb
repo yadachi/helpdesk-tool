@@ -8,18 +8,23 @@
 </h1>
 
 <p>
-  <strong>Address:</strong>
-  <%= @company.address %>
+  <strong>Location:</strong>
+  <%= @company.location_id %>
 </p>
 
 <p>
-  <strong>Telno:</strong>
-  <%= @company.telno %>
+  <strong>Main Phone:</strong>
+  <%= @company.main_phone %>
 </p>
 
 <p>
-  <strong>Delflg:</strong>
-  <%= @company.delflg %>
+  <strong>Fax number:</strong>
+  <%= @company.fax %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @company.is_deleted %>
 </p>
 
 <div>
@@ -32,6 +37,7 @@
       	<th>Name</th>
       	<th>Direct number</th>
       	<th>Email</th>
+        <th>Main contact</th>
       	<th></th>
       	<th></th>
       	<th></th>
@@ -45,6 +51,7 @@
         <td><%= customer.name %></td>
         <td><%= customer.direct_number %></td>
         <td><%= customer.email %></td>
+        <td><%= customer.main_contact %></td>
         <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
         <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>

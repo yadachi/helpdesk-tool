@@ -1,5 +1,7 @@
 Helpdesk::Application.routes.draw do
 
+  resources :locations
+
 # Fundamental Functions
   resources :logins
   controller :logins do
