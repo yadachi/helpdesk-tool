@@ -25,6 +25,8 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
+    @activity = Activity.new(activity_params)
+    # TODO: Need to move this logic to Model ??
     # Get max activity number
     current_activity_number = Activity.maximum(:activity_id, :conditions => ["issue_id = ?", activity_params[:issue_id]])
 
@@ -34,17 +36,7 @@ class ActivitiesController < ApplicationController
     else
       next_activity_number = 1
     end
-
-    # Create new Activity object
-    @activity = Activity.new
-    @activity.issue_id      = activity_params[:issue_id]
-    @activity.activity_id   = next_activity_number
-    @activity.date_time     = activity_params[:date_time]
-    @activity.activity_type = activity_params[:activity_type]
-    @activity.activity_note = activity_params[:activity_note]
-    @activity.hours         = activity_params[:hours]
-    @activity.minutes       = activity_params[:minutes]
-    @activity.entered_by    = activity_params[:entered_by]
+    @activity.activity_id = next_activity_number
 
     respond_to do |format|
       if @activity.save
