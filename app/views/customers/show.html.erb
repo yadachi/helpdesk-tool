@@ -35,10 +35,10 @@
 
 <p>
   <strong>Location:</strong>
-  <%= @customer.location_id %>
+  <%= Location.find(@customer.location_id).name %>
 </p>
 
 </div>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<%= link_to 'Back', company_path(@customer.company_id) %>

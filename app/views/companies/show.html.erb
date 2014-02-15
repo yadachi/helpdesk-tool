@@ -53,14 +53,14 @@
         <td><%= customer.email %></td>
         <td><%= customer.main_contact %></td>
         <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer, company: @company.id) %></td>
         <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
   	</tbody>
 	</table>
 <br>
-<%= link_to 'Add Customer', new_customer_path %>
+<%= link_to 'Add Customer', new_customer_path(company: @company.id) %>
 </div>
 
 <br>

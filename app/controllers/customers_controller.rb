@@ -16,10 +16,12 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
+    @company = Company.find(params[:company])
   end
 
   # GET /customers/1/edit
   def edit
+    @company = Company.find(params[:company])
   end
 
   # POST /customers
@@ -55,9 +57,10 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
+    @company = Customer.find(params[:id]).company_id
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url }
+      format.html { redirect_to company_path(@company) }
       format.json { head :no_content }
     end
   end

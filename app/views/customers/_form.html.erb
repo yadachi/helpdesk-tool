@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -29,15 +29,15 @@
   </div>
   <div class="field">
     <%= f.label :company_id %><br>
-    <%= f.collection_select :company_id, Company.all, :id, :name, prompt: "Select Company Name" %>
+    <%= f.collection_select :company_id, Company.all, :id, :name, selected: Company.find(@company).id %>
   </div>
   <div class="field">
     <%= f.label :location_id %><br>
-    <%= f.text_field :location_id %>
+    <%= f.collection_select :location_id, Location.all, :id, :name, prompt: "Select location of office" %>
   </div>
   <div class="field">
     <%= f.label :main_contact %><br>
-    <<%= f.check_box :main_contact %>
+    <%= f.check_box :main_contact %>
   </div>
   <div class="actions">
     <%= f.submit %>
