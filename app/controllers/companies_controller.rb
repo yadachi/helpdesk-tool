@@ -5,12 +5,13 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.all.order(:name)
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @customers = @company.customers.order(:name)
   end
 
   # GET /companies/new
