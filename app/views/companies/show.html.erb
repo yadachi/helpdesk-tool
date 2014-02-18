@@ -7,11 +7,7 @@
   <%= @company.name %>
 </h1>
 
-<p>
-  <strong>Location:</strong>
-  <%= @company.location_id %>
-</p>
-
+<div id="company_detail">
 <p>
   <strong>Main Phone:</strong>
   <%= @company.main_phone %>
@@ -26,6 +22,16 @@
   <strong>Deleted:</strong>
   <%= @company.is_deleted %>
 </p>
+</div>
+
+<div id="location">
+<p>Location:
+<%= select("location", "company_id", Location.all.collect(&:name)) %>
+</p>
+
+<%= render @location %>
+
+</div>
 
 <div>
 	<h3>Customer List</h3>
