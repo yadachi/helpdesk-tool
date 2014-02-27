@@ -7,11 +7,7 @@
   <%= @company.name %>
 </h1>
 
-<p>
-  <strong>Location:</strong>
-  <%= @company.location_id %>
-</p>
-
+<div id="company_detail">
 <p>
   <strong>Main Phone:</strong>
   <%= @company.main_phone %>
@@ -26,6 +22,16 @@
   <strong>Deleted:</strong>
   <%= @company.is_deleted %>
 </p>
+</div>
+
+<div id="location">
+<p>Location:
+<%= select("location", "company_id", Location.all.collect(&:name)) %>
+</p>
+
+<%= render @location %>
+
+</div>
 
 <div>
 	<h3>Customer List</h3>
@@ -45,7 +51,7 @@
   	</thead>
 
   	<tbody>
-      <% @company.customers.each do |customer| %>
+      <% @customers.each do |customer| %>
 			<tr class="<%= cycle('odd', 'even') %>" >
         <td><%= customer.title %></td>
         <td><%= customer.name %></td>
@@ -53,14 +59,14 @@
         <td><%= customer.email %></td>
         <td><%= customer.main_contact %></td>
         <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer, company: @company.id) %></td>
         <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
   	</tbody>
 	</table>
 <br>
-<%= link_to 'Add Customer', new_customer_path %>
+<%= link_to 'Add Customer', new_customer_path(company: @company.id) %>
 </div>
 
 <br>
