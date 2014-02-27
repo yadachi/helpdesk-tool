@@ -1,0 +1,29 @@
+<p>
+  <strong>Address 1:</strong>
+  <%= @location.address_1 %>
+</p>
+
+<p>
+  <strong>Address 2:</strong>
+  <%= @location.address_2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @location.city %>
+</p>
+
+<p>
+  <strong>County:</strong>
+  <%= @location.county %>
+</p>
+
+<p>
+  <strong>Postcode:</strong>
+  <%= @location.postcode %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @location.country %>
+</p>
