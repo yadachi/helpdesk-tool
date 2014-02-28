@@ -26,7 +26,7 @@
 
 <div id="location">
 <p>Location:
-<%= select("location", "company_id", Location.all.collect(&:name)) %>
+<%= select("location", "company_id", Location.where(company_id: @company).collect(&:name)) %>
 </p>
 
 <%= render @location %>
