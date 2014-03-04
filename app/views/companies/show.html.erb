@@ -25,11 +25,14 @@
 </div>
 
 <div id="location">
-<p>Location:
-<%= select("location", "company_id", Location.where(company_id: @company).collect(&:name)) %>
-</p>
-
-<%= render @location %>
+<p>Location:</p>
+<!--  <%= form_tag @company, method: :get do %>
+  <p>
+    <%= collection_select(:location, :id, Location.where(company_id: @company), :id, :name, selected: params) %>
+  </p>
+  <% end %>
+-->
+<%= render :partial => 'select_location', :locals => {:location => @location} %>
 
 </div>
 

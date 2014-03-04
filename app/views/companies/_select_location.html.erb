@@ -1,0 +1,7 @@
+<%= form_tag @location, method: :get do %>
+  <p>
+    <%= collection_select(:location, :id, Location.where(company_id: @company), :id, :name) %>
+  </p>
+  <% end %>
+
+<%= render @location %>
