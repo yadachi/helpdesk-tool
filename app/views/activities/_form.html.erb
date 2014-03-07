@@ -14,7 +14,8 @@
 
   <div class="field">
     <%= f.label :issue_id %><br>
-    <%= f.number_field :issue_id %>
+    <%= f.label Issue.find(@issue.id).summary %>
+    <%= f.hidden_field :issue_id, :value => @issue.id %>
   </div>
   <div class="field">
     <%= f.label :date_time %><br>
@@ -38,7 +39,7 @@
   </div>
   <div class="field">
     <%= f.label :entered_by %><br>
-    <%= f.number_field :entered_by %>
+    <%= f.collection_select :entered_by, User.all, :id, :name, prompt: "Select User" %>
   </div>
   <div class="actions">
     <%= f.submit %>

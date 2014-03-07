@@ -50,7 +50,7 @@
   <div>
     <h3>Activity List</h3>
     <p align="right">
-      <%= link_to 'Add Activity', new_activity_path %>
+      <%= link_to 'Add Activity', new_activity_path(issue_id: @issue.id) %>
     </p>
 
     <table class="list">
