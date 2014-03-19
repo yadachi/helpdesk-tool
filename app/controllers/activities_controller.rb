@@ -16,6 +16,9 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   def new
     @activity = Activity.new
+    if params[:issue_id]
+      @issue = Issue.find(params[:issue_id])
+    end
   end
 
   # GET /activities/1/edit
