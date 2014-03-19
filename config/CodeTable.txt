@@ -1,0 +1,7 @@
+## Code Tables ##
+
+# Activity Type - Code Type: 1
+Code Key	|	Code Value
+--------------------------------------
+1			|	Remote
+2			|	Onsite
