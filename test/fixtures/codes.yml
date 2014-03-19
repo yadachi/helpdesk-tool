@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codetype: 1
+  codekey: 1
+  codevalue: MyString
+
+two:
+  codetype: 1
+  codekey: 1
+  codevalue: MyString

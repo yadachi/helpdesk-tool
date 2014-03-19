@@ -41,4 +41,13 @@ rails generate migration add_location_id_and_main_contact_to_customers location_
 rails genrate migration fix_column_in_companies
 (edit migration file manually. use change_table to add/remove/rename column in companies)
 
+# Code Model Generate
+rails generate model code codetype:integer codekey:integer codevalue:string
+
+# Add Code
+rails c
+Code.create!(:codetype => 1, :codekey => 1, :codevalue => "Remote")
+Code.create!(:codetype => 1, :codekey => 2, :codevalue => "Onsite")
+exit
+
 ############################################

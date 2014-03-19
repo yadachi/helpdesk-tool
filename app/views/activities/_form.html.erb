@@ -27,11 +27,11 @@
   </div>
   <div class="field">
     <%= f.label :activity_type %><br>
-    <%= f.number_field :activity_type %>
+    <%= f.collection_select :activity_type, Code.where(codetype: 1), :codekey, :codevalue, prompt: "Select Type" %>
   </div>
   <div class="field">
     <%= f.label :activity_note %><br>
-    <%= f.text_field :activity_note %>
+    <%= f.text_area :activity_note %>
   </div>
   <div class="field">
     <%= f.label :hours %><br>
