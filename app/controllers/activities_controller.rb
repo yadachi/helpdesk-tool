@@ -41,6 +41,10 @@ class ActivitiesController < ApplicationController
     end
     @activity.activity_id = next_activity_number
 
+    # Convert blank into zero
+    @activity.hours = 0 if @activity.hours.blank?
+    @activity.minutes = 0 if @activity.minutes.blank?
+
     respond_to do |format|
       if @activity.save
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }

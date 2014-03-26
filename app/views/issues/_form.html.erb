@@ -37,7 +37,7 @@
   </div>
   <div class="field">
     <%= f.label :assigned_to %><br>
-    <%= f.text_field :assigned_to %>
+    <%= f.collection_select :assigned_to, User.all, :id, :name, prompt: "Select User" %>
   </div>
   <div class="actions">
     <%= f.submit %>
