@@ -13,10 +13,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @customers = @company.customers.order(:name)
-    @location = Location.find(params[:id])
-    p "debug"
-    p @location
-    
+    @location = Location.find(1)
   end
 
   # GET /companies/new
