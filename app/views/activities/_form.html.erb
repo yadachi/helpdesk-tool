@@ -15,7 +15,7 @@
   <div class="field">
     <%= f.label :issue_id %><br>
     <% if @issue %>
-      <%= f.label Issue.find(@issue.id).summary %>
+      <%= f.label @issue.summary %>
       <%= f.hidden_field :issue_id, :value => @issue.id %>
     <% else %>
       <%= f.number_field :issue_id %>
