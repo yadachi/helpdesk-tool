@@ -10,7 +10,7 @@
 <div id="company_detail">
 <p>
   <strong>Main Phone:</strong>
-  <%= @company.main_phone %>
+  <%= @company.telephone %>
 </p>
 
 <p>
@@ -25,8 +25,8 @@
 </div>
 
 <div id="location">
-<p>Location:
-<%= select("location", "company_id", Location.all.collect(&:name)) %>
+<p>Location:</p>
+<%= collection_select(:location, :id, Location.where(company_id: @company), :id, :name, selected: params) %>
 </p>
 
 <%= render @location %>

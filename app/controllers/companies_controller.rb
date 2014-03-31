@@ -13,7 +13,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @customers = @company.customers.order(:name)
-    @location = Location.find_by_company_id(1)
+    @location = Location.find(1)
   end
 
   # GET /companies/new
@@ -73,6 +73,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :location_id, :main_phone, :fax, :is_deleted)
+      params.require(:company).permit(:name, :telephone, :fax, :is_deleted)
     end
 end
