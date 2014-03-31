@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318124731) do
+ActiveRecord::Schema.define(version: 20140327224738) do
 
   create_table "activities", force: true do |t|
     t.integer  "issue_id"
@@ -36,11 +36,10 @@ ActiveRecord::Schema.define(version: 20140318124731) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
-    t.string   "main_phone"
+    t.string   "telephone"
     t.boolean  "is_deleted"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "location_id"
     t.string   "fax"
   end
 
@@ -62,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140318124731) do
     t.datetime "received_date"
     t.date     "due_date"
     t.string   "status"
-    t.string   "support_type"
+    t.string   "issue_type"
     t.string   "assigned_to"
     t.datetime "created_at"
     t.datetime "updated_at"
