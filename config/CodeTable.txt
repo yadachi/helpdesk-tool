@@ -1,16 +1,22 @@
 ## Code Tables ##
 
 
-# General - Code Type: 0
+# Activity Type - Code Type: 1
+Code Key	|	Code Value
+--------------------------------------
+1			|	Remote
+2			|	Onsite
+
+# Status - Code Type: 2
 Code Key	|	Code Value
 --------------------------------------
 1			|	Open
 2			|	Closed
 3			|	Pending
 
-
-# Activity Type - Code Type: 1
+# Issue Type - Code Type: 3
 Code Key	|	Code Value
 --------------------------------------
-1			|	Remote
-2			|	Onsite
+1			|	Inquiry
+2			|	Request
+3			|	Trouble
