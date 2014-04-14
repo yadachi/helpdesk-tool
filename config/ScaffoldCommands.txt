@@ -56,4 +56,8 @@ Code.create!(:codetype => 3, :codekey => 2, :codevalue => "Request")
 Code.create!(:codetype => 3, :codekey => 3, :codevalue => "Trouble")
 exit
 
+# Change column type of Issue table
+rails generate migration change_table_types_issue
+
+
 ############################################
