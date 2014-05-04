@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :company_name %><br>
-    <%= f.text_field :company_name %>
+    <%= f.collection_select :company_name, Company.where(is_deleted: false), :id, :name, prompt: "Select Company" %>    
   </div>
   <div class="field">
     <%= f.label :summary %><br>
@@ -29,11 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.collection_select :status, Code.where(codetype: 2), :codekey, :codevalue, prompt: "Select Status" %> 
   </div>
   <div class="field">
     <%= f.label :issue_type %><br>
-    <%= f.text_field :issue_type %>
+    <%= f.collection_select :issue_type, Code.where(codetype: 3), :codekey, :codevalue, prompt: "Select Type" %> 
   </div>
   <div class="field">
     <%= f.label :assigned_to %><br>
