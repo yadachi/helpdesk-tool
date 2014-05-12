@@ -16,12 +16,12 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
-    @company = Company.find(params[:company])
+    @company = Company.find(params[:company_id])
   end
 
   # GET /customers/1/edit
   def edit
-    @company = Company.find(params[:company])
+    @company = Company.find(params[:company_id])
   end
 
   # POST /customers
@@ -33,6 +33,7 @@ class CustomersController < ApplicationController
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @customer }
+        format.js  #create.js.erb
       else
         format.html { render action: 'new' }
         format.json { render json: @customer.errors, status: :unprocessable_entity }

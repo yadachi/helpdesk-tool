@@ -1,6 +1,6 @@
 Helpdesk::Application.routes.draw do
 
-  resources :locations
+  
 
 # Fundamental Functions
   resources :logins
@@ -18,7 +18,13 @@ Helpdesk::Application.routes.draw do
 
 # Administration/Maintenance Functions
   resources :maintenance
-  resources :users, :customers, :companies
+  resources :users
+
+  resources :locations, :customers
+
+  resources :companies do
+    resources :locations, :customers
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

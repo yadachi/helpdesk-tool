@@ -35,38 +35,35 @@
 
 <div>
 	<h3>Customer List</h3>
-
-	<table class="list">
-  	<thead>
-    	<tr>
-      	<th>Title</th>
-      	<th>Name</th>
-      	<th>Direct number</th>
-      	<th>Email</th>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Name</th>
+        <th>Direct number</th>
+        <th>Email</th>
         <th>Main contact</th>
-      	<th></th>
-      	<th></th>
-      	<th></th>
-    	</tr>
-  	</thead>
-
-  	<tbody>
-      <% @customers.each do |customer| %>
-			<tr class="<%= cycle('odd', 'even') %>" >
-        <td><%= customer.title %></td>
-        <td><%= customer.name %></td>
-        <td><%= customer.direct_number %></td>
-        <td><%= customer.email %></td>
-        <td><%= customer.main_contact %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer, company: @company.id) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
+    </thead>
+
+    <%= render :partial => @company.customers %>
+  
+    <tbody>
+      <%= form_for([@company, Customer.new]) do |f| %>
+      <td><%= f.text_field :title %></td>
+      <td><%= f.text_field :name %></td>
+      <td><%= f.text_field :direct_number %></td>
+      <td><%= f.text_field :email %></td>
+      <td><%= f.text_field :main_contact %></td>
+      <%= f.submit %>
       <% end %>
-  	</tbody>
-	</table>
-<br>
-<%= link_to 'Add Customer', new_customer_path(company: @company.id) %>
+    </tbody>
+  </table>
+<br />
+<%= link_to 'Add Customer', new_company_customer_path(@company) %>
 </div>
 
 <br>
