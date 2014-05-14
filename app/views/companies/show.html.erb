@@ -55,29 +55,27 @@
 <br />
 <%= form_for([@company, Customer.new]) do |f| %>
 
-  <%= field_set_tag 'Name' do %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <%= field_set_tag 'New Customer' do %>
     <%= f.label :name %>
+    <%= f.select :title, Customer::TITLE, prompt: 'title' %>
     <%= f.text_field :name %>
     <%= f.label :direct_number %>
-    <%= f.text_field :direct_number %>
+    <%= f.text_field :direct_number %><br/>
     <%= f.label :email %>
-    <%= f.text_field :email %><br/>
-    <%= f.label :company_id %>
-    <%= f.collection_select :company_id, Company.all, :id, :name, selected: Company.find(@company).id %>
+    <%= f.text_field :email %>
     <%= f.label :location_id %>
-    <%= f.collection_select :location_id, Location.all, :id, :name, prompt: "Select location of office" %>
+    <%= f.collection_select :location_id, Location.where(company_id: @company), :id, :name, selected: params %>
     <%= f.label :main_contact %>
     <%= f.check_box :main_contact %>
   <% end %>
-  <%= f.submit %>
+  <%= f.submit 'Add new Customer' %>
 <% end %>
 
-<%= link_to 'Add Customer', new_company_customer_path(@company) %>
 </div>
 
 <br>
 </div>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
+
+
