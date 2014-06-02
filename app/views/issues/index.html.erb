@@ -20,13 +20,13 @@
     <tbody>
       <% @issues.each do |issue| %>
       <tr class="<%= cycle('odd', 'even') %>">
-        <td><%= link_to issue.company_name, issue %></td>
+        <td><%= link_to Company.find(issue.company_name).name, issue %></td>
         <td><%= issue.summary %></td>
         <td><%= issue.received_date %></td>
         <td><%= issue.due_date %></td>
-        <td><%= issue.status %></td>
+        <td><%= Code.find_by(:codetype => 2, :codekey => issue.status).codevalue %></td>
         <td><%= issue.issue_type %></td>
-        <td><%= issue.assigned_to %></td>
+        <td><%= User.find(issue.assigned_to).name %></td>
         <td><%= link_to 'Show', issue %></td>
         <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
         <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
