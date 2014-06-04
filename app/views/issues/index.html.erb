@@ -9,10 +9,8 @@
         <th>Received date</th>
         <th>Due date</th>
         <th>Status</th>
-        <th>Support type</th>
+        <th>Issue type</th>
         <th>Assigned to</th>
-        <th></th>
-        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -20,15 +18,13 @@
     <tbody>
       <% @issues.each do |issue| %>
       <tr class="<%= cycle('odd', 'even') %>">
-        <td><%= link_to Company.find(issue.company_name).name, issue %></td>
-        <td><%= issue.summary %></td>
+        <td><%= Company.find(issue.company_name).name %></td>
+        <td><%= link_to issue.summary, issue %></td>
         <td><%= issue.received_date %></td>
         <td><%= issue.due_date %></td>
         <td><%= Code.find_by(:codetype => 2, :codekey => issue.status).codevalue %></td>
-        <td><%= issue.issue_type %></td>
+        <td><%= Code.find_by(:codetype => 3, :codekey => issue.issue_type).codevalue %></td>
         <td><%= User.find(issue.assigned_to).name %></td>
-        <td><%= link_to 'Show', issue %></td>
-        <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
         <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
