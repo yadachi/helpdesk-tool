@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
 <p>
   <strong>Activity ID:</strong>
@@ -7,17 +9,17 @@
 
 <p>
   <strong>Issue:</strong>
-  <%= @activity.issue_id %>
+  <%= Issue.find(@activity.issue_id).summary %>
 </p>
 
 <p>
   <strong>Date time:</strong>
-  <%= @activity.date_time %>
+  <%= @activity.date_time.strftime("%Y-%m-%d %H:%M") %>
 </p>
 
 <p>
   <strong>Activity type:</strong>
-  <%= @activity.activity_type %>
+  <%= Code.find_by(:codetype => 1, :codekey => @activity.activity_type).codevalue %>
 </p>
 
 <p>
@@ -37,7 +39,7 @@
 
 <p>
   <strong>Entered by:</strong>
-  <%= @activity.entered_by %>
+  <%= User.find(@activity.entered_by).name %>
 </p>
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
