@@ -6,6 +6,7 @@ Code Key	|	Code Value
 --------------------------------------
 1			|	Remote
 2			|	Onsite
+3			|	Other
 
 # Status - Code Type: 2
 Code Key	|	Code Value
