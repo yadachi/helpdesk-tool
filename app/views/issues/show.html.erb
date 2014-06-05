@@ -64,21 +64,17 @@
           <th>Minutes</th>
           <th>Entered By</th>
           <th></th>
-          <th></th>
-          <th></th>
         </thead>
         <tbody>
           <% @issue.activities.each do |activity| %>
           <tr class="<%= cycle('odd', 'even') %>">
-            <td><%= activity.activity_id %></td>
+            <td><%= link_to activity.activity_id, activity %></td>
             <td><%= activity.date_time %></td>
-            <td><%= activity.activity_type %></td>
+            <td><%= Code.find_by(:codetype => 1, :codekey => activity.activity_type).codevalue %></td>
             <td><%= activity.activity_note %></td>
             <td><%= activity.hours %></td>
             <td><%= activity.minutes %></td>
-            <td><%= activity.entered_by %></td>
-            <td><%= link_to 'Show', activity %></td>
-            <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+            <td><%= User.find(activity.entered_by).name %></td>
             <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
           <% end %>

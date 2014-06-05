@@ -79,6 +79,7 @@ Code.transaction do
 
 	Code.create(:codetype => 1, :codekey => 1, :codevalue => "Remote")
 	Code.create(:codetype => 1, :codekey => 2, :codevalue => "Onsite")
+	Code.create(:codetype => 1, :codekey => 3, :codevalue => "Other")
 	Code.create(:codetype => 2, :codekey => 1, :codevalue => "Open")
 	Code.create(:codetype => 2, :codekey => 2, :codevalue => "Closed")
 	Code.create(:codetype => 2, :codekey => 3, :codevalue => "Pending")
