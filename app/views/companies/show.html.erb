@@ -35,7 +35,7 @@
 
 <div>
 	<h3>Customer List</h3>
-  <table class="list">
+  <table class="list", id="customers">
     <thead>
       <tr>
         <th>Title</th>
@@ -48,12 +48,15 @@
         <th></th>
       </tr>
     </thead>
+    
+    <tbody>
 
     <%= render :partial => @company.customers %>
-  
+
+    </tbody>
   </table>
 <br />
-<%= form_for([@company, Customer.new]) do |f| %>
+<%= form_for([@company, Customer.new], remote: true) do |f| %>
 
   <%= field_set_tag 'New Customer' do %>
     <%= f.label :name %>

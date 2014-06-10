@@ -1,4 +1,4 @@
-var new_comment = $("<%= escape_javascript(render(:partial => @comment))%>").hide();
-$('#comments').prepend(new_comment);
-$('#comment_<%= @comment.id %>').fadeIn("slow");
-$('#new_comment')[0].reset();		
+var new_customer = $("<%= escape_javascript(render(:partial => @customer))%>").hide();
+$('#customers').append(new_customer);
+$('#customer_<%= @customer.id %>').fadeIn("slow");
+$('#new_customer')[0].reset();
