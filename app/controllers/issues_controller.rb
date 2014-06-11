@@ -5,7 +5,8 @@ class IssuesController < ApplicationController
   # GET /issues
   # GET /issues.json
   def index
-    @issues = Issue.all
+#    @issues = Issue.all
+    @issues = Issue.search(params[:search])
   end
 
   # GET /issues/1
@@ -16,6 +17,7 @@ class IssuesController < ApplicationController
   # GET /issues/new
   def new
     @issue = Issue.new
+
   end
 
   # GET /issues/1/edit

@@ -1,6 +1,13 @@
 <div id="content">
   <h1>Issue List</h1>
 
+  <%= form_tag issues_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>
+
   <table class="list">
     <thead>
       <tr>
@@ -20,7 +27,7 @@
       <tr class="<%= cycle('odd', 'even') %>">
         <td><%= Company.find(issue.company_name).name %></td>
         <td><%= link_to issue.summary, issue %></td>
-        <td><%= issue.received_date %></td>
+        <td><%= issue.received_date.strftime("%Y-%m-%d") %></td>
         <td><%= issue.due_date %></td>
         <td><%= Code.find_by(:codetype => 2, :codekey => issue.status).codevalue %></td>
         <td><%= Code.find_by(:codetype => 3, :codekey => issue.issue_type).codevalue %></td>

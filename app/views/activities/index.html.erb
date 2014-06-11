@@ -23,7 +23,7 @@
       <tr class="<%= cycle('odd', 'even') %>">
         <td><%= activity.issue_id %></td>
         <td><%= activity.activity_id %></td>
-        <td><%= activity.date_time %></td>
+        <td><%= activity.date_time.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= Code.find_by(:codetype => 1, :codekey => activity.activity_type).codevalue %></td>
         <td><%= activity.activity_note %></td>
         <td><%= activity.hours %></td>

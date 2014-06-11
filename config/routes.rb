@@ -1,7 +1,5 @@
 Helpdesk::Application.routes.draw do
 
-  
-
 # Fundamental Functions
   resources :logins
   controller :logins do
@@ -19,9 +17,6 @@ Helpdesk::Application.routes.draw do
 # Administration/Maintenance Functions
   resources :maintenance
   resources :users
-
-  resources :locations, :customers
-
   resources :companies do
     resources :locations, :customers
   end

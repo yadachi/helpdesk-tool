@@ -6,7 +6,7 @@
 
   <p>
     <strong>Company name:</strong>
-    <%= @issue.company_name %>
+    <%= Company.find(@issue.company_name).name %>
   </p>
 
   <p>
@@ -16,7 +16,7 @@
 
   <p>
     <strong>Received date:</strong>
-    <%= @issue.received_date %>
+    <%= @issue.received_date.strftime("%Y-%m-%d %H:%M") %>
   </p>
 
   <p>
@@ -26,17 +26,17 @@
 
   <p>
     <strong>Status:</strong>
-    <%= @issue.status %>
+    <%= Code.find_by(:codetype => 2, :codekey => @issue.status).codevalue %>
   </p>
 
   <p>
-    <strong>Support type:</strong>
-    <%= @issue.issue_type %>
+    <strong>Issue type:</strong>
+    <%= Code.find_by(:codetype => 3, :codekey => @issue.issue_type).codevalue %>
   </p>
 
   <p>
     <strong>Assigned to:</strong>
-    <%= @issue.assigned_to %>
+    <%= User.find(@issue.assigned_to).name %>
   </p>
   <%= link_to 'Edit', edit_issue_path(@issue) %> |
   <%= link_to 'Back', issues_path %>
@@ -69,7 +69,7 @@
           <% @issue.activities.each do |activity| %>
           <tr class="<%= cycle('odd', 'even') %>">
             <td><%= link_to activity.activity_id, activity %></td>
-            <td><%= activity.date_time %></td>
+            <td><%= activity.date_time.strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= Code.find_by(:codetype => 1, :codekey => activity.activity_type).codevalue %></td>
             <td><%= activity.activity_note %></td>
             <td><%= activity.hours %></td>
