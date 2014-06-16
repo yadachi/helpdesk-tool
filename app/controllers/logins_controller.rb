@@ -13,7 +13,7 @@ class LoginsController < ApplicationController
 		if user && user.authenticate(params[:pass])
 			# Add to session
 			session[:user_id] = user.userid
-			redirect_to issues_path
+			redirect_to root_path
 		else
 			# Set message to flash variable
 			flash.now.alert = "Please re-enter."
