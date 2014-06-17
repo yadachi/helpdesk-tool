@@ -6,5 +6,5 @@
   <td><%= customer.main_contact %></td>
   <td><%= link_to 'Show', company_customer_path(@company, customer) %></td>
   <td><%= link_to 'Edit', edit_company_customer_path(@company, customer) %></td>
-  <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to 'Destroy', company_customer_path(@company, customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <% end %>
