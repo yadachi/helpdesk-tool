@@ -1,5 +1,7 @@
 Helpdesk::Application.routes.draw do
 
+root 'dashboard#index'
+
 # Fundamental Functions
   resources :logins
   controller :logins do
