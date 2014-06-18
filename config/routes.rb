@@ -18,7 +18,10 @@ root 'dashboard#index'
 
 # Administration/Maintenance Functions
   resources :maintenance
-  resources :users, :customers, :companies, :locations
+  resources :users
+  resources :companies do
+    resources :locations, :customers
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

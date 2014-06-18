@@ -5,14 +5,12 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    #@companies = Company.all.order(:name)
     @companies = Company.search(params[:search])
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
-    @customers = @company.customers.order(:name)
     @location = Location.find(1)
   end
 

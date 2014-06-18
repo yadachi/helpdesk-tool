@@ -35,41 +35,50 @@
 
 <div>
 	<h3>Customer List</h3>
-
-	<table class="list">
-  	<thead>
-    	<tr>
-      	<th>Title</th>
-      	<th>Name</th>
-      	<th>Direct number</th>
-      	<th>Email</th>
+  <table class="list", id="customers">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Name</th>
+        <th>Direct number</th>
+        <th>Email</th>
         <th>Main contact</th>
-      	<th></th>
-      	<th></th>
-      	<th></th>
-    	</tr>
-  	</thead>
-
-  	<tbody>
-      <% @customers.each do |customer| %>
-			<tr class="<%= cycle('odd', 'even') %>" >
-        <td><%= customer.title %></td>
-        <td><%= customer.name %></td>
-        <td><%= customer.direct_number %></td>
-        <td><%= customer.email %></td>
-        <td><%= customer.main_contact %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer, company: @company.id) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-      <% end %>
-  	</tbody>
-	</table>
-<br>
-<%= link_to 'Add Customer', new_customer_path(company: @company.id) %>
+    </thead>
+    
+    <tbody>
+
+    <%= render :partial => @company.customers %>
+
+    </tbody>
+  </table>
+<br />
+<%= form_for([@company, Customer.new], remote: true) do |f| %>
+
+  <%= field_set_tag 'New Customer' do %>
+    <%= f.label :name %>
+    <%= f.select :title, Customer::TITLE, prompt: 'title' %>
+    <%= f.text_field :name %>
+    <%= f.label :direct_number %>
+    <%= f.text_field :direct_number %><br/>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.label :location_id %>
+    <%= f.collection_select :location_id, Location.where(company_id: @company), :id, :name, selected: params %>
+    <%= f.label :main_contact %>
+    <%= f.check_box :main_contact %>
+  <% end %>
+  <%= f.submit 'Add new Customer' %>
+<% end %>
+
 </div>
 
 <br>
 </div>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
+
+

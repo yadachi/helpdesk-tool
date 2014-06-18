@@ -16,23 +16,25 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
-    @company = Company.find(params[:company])
   end
 
   # GET /customers/1/edit
   def edit
-    @company = Company.find(params[:company])
+    @company = Company.find(params[:company_id])
+    @customer = @company.customers.find(params[:id])
   end
 
   # POST /customers
   # POST /customers.json
   def create
-    @customer = Customer.new(customer_params)
+    @company = Company.find(params[:company_id])
+    @customer = @company.customers.create(customer_params)
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        format.html { redirect_to @company, notice: "#{@customer.name} was successfully created." }
         format.json { render action: 'show', status: :created, location: @customer }
+        format.js  #create.js.erb
       else
         format.html { render action: 'new' }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
@@ -43,13 +45,15 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
+    @company = Company.find(params[:company_id])
+
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
+        format.html { redirect_to company_path(@company), notice: 'Customer was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +61,7 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
-    @company = Customer.find(params[:id]).company_id
+    @company = Company.find(params[:company_id])
     @customer.destroy
     respond_to do |format|
       format.html { redirect_to company_path(@company) }
