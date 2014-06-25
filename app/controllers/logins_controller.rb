@@ -1,11 +1,11 @@
 class LoginsController < ApplicationController
 
 	def index
-		render "new"
+		render "new", :layout => false
 	end
 
 	def show
-		render "new"
+		render "new", :layout => false
 	end
 
 	def create
@@ -16,8 +16,8 @@ class LoginsController < ApplicationController
 			redirect_to root_path
 		else
 			# Set message to flash variable
-			flash.now.alert = "Please re-enter."
-			render "new"
+			flash.now.alert = "Invalid User ID or Password. Please re-enter."
+			render "new", :layout => false
 		end
 	end
 
