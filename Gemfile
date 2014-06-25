@@ -47,3 +47,6 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use readLine to enable rails console
 gem 'rb-readline'
+
+# Use bootstrap css
+gem 'bootstrap-sass', '~> 3.1.1'
