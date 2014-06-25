@@ -1,5 +1,4 @@
-<div id="open-dialog">
-<%= form_for(@company) do |f| %>
+<%= form_for(@company, class: "form-horizontal", role: "form" ) do |f| %>
   <% if @company.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
@@ -12,24 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :telephone %><br>
-    <%= f.text_field :telephone %>
+  <div class="form-group">
+    <%= f.label :telephone, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :telephone, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :fax_number %><br>
-    <%= f.text_field :fax %>
+  <div class="form-group">
+    <%= f.label :fax_number, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :fax, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :deleted %><br>
-    <%= f.check_box :is_deleted %>
+  <div class="form-group">
+    <%= f.label :deleted, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.check_box :is_deleted, class: "form-control" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
-</div>
