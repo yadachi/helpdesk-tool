@@ -13,6 +13,7 @@ class LoginsController < ApplicationController
 		if user && user.authenticate(params[:pass])
 			# Add to session
 			session[:user_id] = user.userid
+			session[:user_name] = user.name
 			redirect_to root_path
 		else
 			# Set message to flash variable
