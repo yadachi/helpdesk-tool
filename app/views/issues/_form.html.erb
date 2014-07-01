@@ -1,45 +1,45 @@
 <%= form_for(@issue) do |f| %>
-  <% if @issue.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+<% if @issue.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
 
-      <ul>
-      <% @issue.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @issue.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :company_name %><br>
-    <%= f.collection_select :company_name, Company.where(is_deleted: false), :id, :name, prompt: "Select Company" %>    
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.text_area :summary %>
-  </div>
-  <div class="field">
-    <%= f.label :received_date %><br>
-    <%= f.datetime_select :received_date %>
-  </div>
-  <div class="field">
-    <%= f.label :due_date %><br>
-    <%= f.date_select :due_date %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.collection_select :status, Code.where(codetype: 2), :codekey, :codevalue, prompt: "Select Status" %> 
-  </div>
-  <div class="field">
-    <%= f.label :issue_type %><br>
-    <%= f.collection_select :issue_type, Code.where(codetype: 3), :codekey, :codevalue, prompt: "Select Type" %> 
-  </div>
-  <div class="field">
-    <%= f.label :assigned_to %><br>
-    <%= f.collection_select :assigned_to, User.all, :id, :name, prompt: "Select User" %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+  <%= f.label :company_name %><br>
+  <%= f.collection_select :company_name, Company.where(is_deleted: false), :id, :name, prompt: "Select Company" %>    
+</div>
+<div class="field">
+  <%= f.label :summary %><br>
+  <%= f.text_area :summary %>
+</div>
+<div class="field">
+  <%= f.label :received_date %><br>
+  <%= f.datetime_select :received_date %>
+</div>
+<div class="field">
+  <%= f.label :due_date %><br>
+  <%= f.date_select :due_date %>
+</div>
+<div class="field">
+  <%= f.label :status %><br>
+  <%= f.collection_select :status, Code.where(codetype: 2), :codekey, :codevalue, prompt: "Select Status" %> 
+</div>
+<div class="field">
+  <%= f.label :issue_type %><br>
+  <%= f.collection_select :issue_type, Code.where(codetype: 3), :codekey, :codevalue, prompt: "Select Type" %> 
+</div>
+<div class="field">
+  <%= f.label :assigned_to %><br>
+  <%= f.collection_select :assigned_to, User.all, :id, :name, prompt: "Select User" %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>
