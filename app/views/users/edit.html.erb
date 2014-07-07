@@ -1,6 +1,15 @@
-<h1>Editing user</h1>
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Editing User</h1>
+      <ol class="breadcrumb">
+        <li><a href='<%= maintenance_index_path %>'><i class="fa fa-wrench"></i> Maintenance</a></li>
+        <li><a href='<%= users_path %>'><i class="fa fa-users"></i> System Users</a></li>
+        <li class="active"><i class="fa fa-edit"></i> Editing User</li>
+      </ol>
+    </div>
+  </div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+</div>
