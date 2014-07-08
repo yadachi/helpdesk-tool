@@ -1,46 +1,81 @@
-<% if notice %>
-  <p id="notice"><%= notice %></p>
-<% end %>
+<div id="page-wrapper">
 
-<p>
-  <strong>Activity ID:</strong>
-  <%= @activity.activity_id %>
-</p>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Issue Detail</h1>
+      <ol class="breadcrumb">
+        <li><a href='<%= issues_path %>'><i class="fa fa-tasks"></i> Issues</a></li>
+        <li><a href='<%= issue_path(@activity.issue_id) %>'><i class="fa fa-list-alt"></i> Issue Detail</a></li>
+        <li class="active"><i class="fa fa-life-saver"></i> Activity Detail</li>
+      </ol>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  <div class="row">
+    <div class="col-lg-12">
+      <% if notice %>
+      <div class="alert alert-info alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= notice %>
+      </div>
+      <% end %>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  <div class="row" style="margin-bottom: 10px;">
+    <div class="col-lg-12">
+      <div class="text-right">
+        <%= link_to 'Edit', edit_activity_path(@activity), class: 'btn btn-default' %> &nbsp; <%= link_to 'Delete Activity', @activity, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="table-responsive">
+        <table class="table ">
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Activity ID:</td>
+              <td><%= @activity.activity_id %></td>
+            </tr>
+            <tr>
+              <td>Issue:</td>
+              <td><%= Issue.find(@activity.issue_id).summary %></td>
+            </tr>
+            <tr>
+              <td>Date/Time:</td>
+              <td><%= @activity.date_time.strftime("%Y-%m-%d %H:%M") %></td>
+            </tr>
+            <tr>
+              <td>Activity Type:</td>
+              <td>  <%= Code.find_by(:codetype => 1, :codekey => @activity.activity_type).codevalue %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /.col -->
+    <div class="col-lg-6">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Activity Note:</td>
+              <td><%= @activity.activity_note %></td>
+            </tr>
+            <tr>
+              <td>Time Consumed:</td>
+              <td><%= @activity.hours %> : <%= @activity.minutes %></td>
+            </tr>
+            <tr>
+              <td>Entered By:</td>
+              <td><%= User.find(@activity.entered_by).name %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
 
-<p>
-  <strong>Issue:</strong>
-  <%= Issue.find(@activity.issue_id).summary %>
-</p>
-
-<p>
-  <strong>Date time:</strong>
-  <%= @activity.date_time.strftime("%Y-%m-%d %H:%M") %>
-</p>
-
-<p>
-  <strong>Activity type:</strong>
-  <%= Code.find_by(:codetype => 1, :codekey => @activity.activity_type).codevalue %>
-</p>
-
-<p>
-  <strong>Activity note:</strong>
-  <%= @activity.activity_note %>
-</p>
-
-<p>
-  <strong>Hours:</strong>
-  <%= @activity.hours %>
-</p>
-
-<p>
-  <strong>Minutes:</strong>
-  <%= @activity.minutes %>
-</p>
-
-<p>
-  <strong>Entered by:</strong>
-  <%= User.find(@activity.entered_by).name %>
-</p>
-
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', issue_path(@activity.issue_id) %>
+</div><!-- /#page-wrapper -->
