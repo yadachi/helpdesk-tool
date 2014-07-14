@@ -1,36 +1,77 @@
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
+<div id="page-wrapper">
 
-<p>
-  <strong>Userid:</strong>
-  <%= @user.userid %>
-</p>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>User Detail</h1>
+      <ol class="breadcrumb">
+        <li><a href='<%= maintenance_index_path %>'><i class="fa fa-wrench"></i> Maintenance</a></li>
+        <li><a href='<%= users_path %>'><i class="fa fa-users"></i> System Users</a></li>
+        <li class="active"><i class="fa fa-user"></i> User Detail</li>
+      </ol>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  <div class="row">
+    <div class="col-lg-12">
+      <% if notice %>
+      <div class="alert alert-info alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= notice %>
+      </div>
+      <% end %>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  <div class="row" style="margin-bottom: 10px;">
+    <div class="col-lg-12">
+      <div class="text-right">
+        <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default' %> &nbsp; <%= link_to 'Delete User', @issue, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="table-responsive">
+        <table class="table ">
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <td>User ID:</td>
+              <td><%= @user.userid %></td>
+            </tr>
+            <tr>
+              <td>User Name:</td>
+              <td><%= @user.name %></td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td><%= @user.email %></td>
+            </tr>
+            <tr>
+              <td>Access Level:</td>
+              <td><%= @user.level %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /.col -->
+    <div class="col-lg-6">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Account Lock Flag:</td>
+              <td><%= @user.accountlockflg %></td>
+            </tr>
+            <tr>
+              <td>Delete Flag:</td>
+              <td><%= @user.delflg %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @user.level %>
-</p>
-
-<p>
-  <strong>Accountlockflg:</strong>
-  <%= @user.accountlockflg %>
-</p>
-
-<p>
-  <strong>Delflg:</strong>
-  <%= @user.delflg %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div><!-- /#page-wrapper -->

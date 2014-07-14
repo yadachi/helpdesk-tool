@@ -1,31 +1,57 @@
-<div id="content">
-<h1>User List</h1>
+<div id="page-wrapper">
 
-<table class="list">
-  <thead>
-    <tr>
-      <th>User ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Level</th>
-      <th></th>
-    </tr>
-  </thead>
+  <!-- Page Header -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>System Users</h1>
+      <ol class="breadcrumb">
+        <li><a href='<%= maintenance_index_path %>'><i class="fa fa-wrench"></i> Maintenance</a></li>
+        <li class="active"><i class="fa fa-users"></i> System Users</li>
+      </ol>
+      <!-- alerts here -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr class="<%= cycle('odd', 'even') %>">
-        <td><%= link_to user.userid, user %></td>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.level %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row" style="margin-bottom: 10px;">
+    <div class="col-lg-12">
+      <a href='<%= new_user_path %>'>
+        <button class="btn btn-default"><i class="fa fa-plus-circle"></i> Add New User</button>
+      </a>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-users"></i> System Users</h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table  table-hover table-striped">
+              <thead>
+                <tr>
+                  <th>User ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                <tr class="<%= cycle('odd', 'even') %>">
+                  <td><%= link_to user.userid, user %></td>
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.level %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
 
-<br>
-<%= link_to 'New User', new_user_path %>
-
-</div>
+</div><!-- /#page-wrapper -->
