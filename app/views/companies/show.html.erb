@@ -1,84 +1,104 @@
-<div id="content">
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>
+        <%= @company.name %>
+      </h1>
+      <ol class="breadcrumb">
+        <li class="active"><i class="fa fa-building"></i> Companies &nbsp;<i class="fa fa-chevron-right"></i>&nbsp; <i class="fa fa-list-alt"></i> 
+          <%= @company.name %>
+        </li>
+      </ol>
+    </div><!-- /.col -->
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <% if notice %>
+      <div class="alert alert-info alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>   
+        <%= notice %></p>
+      </div>
+      <% end %>      
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 10px;">
+    <div class="col-lg-12">
+      <div class="text-right">
+        <%= link_to 'Edit', edit_company_path(@company), class: 'btn btn-default' %> &nbsp; <%= link_to 'Delete', @company, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="table-responsive">
+        <table class="table ">
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Main Phone:</td>
+              <td><%= @company.telephone %></td>
+            </tr>
+            <tr>
+              <td>Fax number:</td>
+              <td><%= @company.fax %></td>
+            </tr>
+            <tr>
+              <td>Deleted:</td>
+              <td><%= @company.is_deleted %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-6">
+              <%= collection_select(:location, :id, Location.where(company_id: @company), :id, :name, selected: params) %>
+              <%= render @location %>
+    </div>
+  </div>
 
-<h1>
-  <%= @company.name %>
-</h1>
+  <div class="row" style="margin-top: 40px; margin-bottom: 10px;">
+    <div class="col-lg-12">
+      <button class="btn btn-default" data-toggle="modal" data-target="#customerModal">
+        <i class="fa fa-plus-circle"></i> Add Customer
+      </button>
+    </div><!-- /.col -->
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-building"></i> Customer List</h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-hover table-striped tablesorter", id="customers">
+              <thead>
+                <tr>
+                  <th>Title <i class="fa fa-sort"></i></th>
+              <th>Name <i class="fa fa-sort"></i></th>
+              <th>Direct number <i class="fa fa-sort"></i></th>
+              <th>Email <i class="fa fa-sort"></i></th>
+              <th>Main contact <i class="fa fa-sort"></i></th>
+              <th></th>
+              <th></th>
+              <th></th>
+                </tr>
+              </thead>
 
-<div id="company_detail">
-<p>
-  <strong>Main Phone:</strong>
-  <%= @company.telephone %>
-</p>
+              <tbody>
+                <%= render :partial => @company.customers %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Fax number:</strong>
-  <%= @company.fax %>
-</p>
+<%= render 'customers/form'  %>
 
-<p>
-  <strong>Deleted:</strong>
-  <%= @company.is_deleted %>
-</p>
 </div>
-
-<div id="location">
-<p>Location:</p>
-<%= collection_select(:location, :id, Location.where(company_id: @company), :id, :name, selected: params) %>
-</p>
-
-<%= render @location %>
-
-</div>
-
-<div>
-	<h3>Customer List</h3>
-  <table class="list", id="customers">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Name</th>
-        <th>Direct number</th>
-        <th>Email</th>
-        <th>Main contact</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    
-    <tbody>
-
-    <%= render :partial => @company.customers %>
-
-    </tbody>
-  </table>
-<br />
-<%= form_for([@company, Customer.new], remote: true) do |f| %>
-
-  <%= field_set_tag 'New Customer' do %>
-    <%= f.label :name %>
-    <%= f.select :title, Customer::TITLE, prompt: 'title' %>
-    <%= f.text_field :name %>
-    <%= f.label :direct_number %>
-    <%= f.text_field :direct_number %><br/>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <%= f.label :location_id %>
-    <%= f.collection_select :location_id, Location.where(company_id: @company), :id, :name, selected: params %>
-    <%= f.label :main_contact %>
-    <%= f.check_box :main_contact %>
-  <% end %>
-  <%= f.submit 'Add new Customer' %>
-<% end %>
-
-</div>
-
-<br>
-</div>
-<%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
 
 
