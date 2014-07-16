@@ -2,3 +2,4 @@ var new_customer = $("<%= escape_javascript(render(:partial => @customer))%>").h
 $('#customers').append(new_customer);
 $('#customer_<%= @customer.id %>').fadeIn("slow");
 $('#new_customer')[0].reset();
+$('#customerModal').modal("hide");

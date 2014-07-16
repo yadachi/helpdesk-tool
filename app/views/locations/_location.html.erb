@@ -1,29 +1,26 @@
-<p>
-  <strong>Address 1:</strong>
-  <%= @location.address_1 %>
-</p>
-
-<p>
-  <strong>Address 2:</strong>
-  <%= @location.address_2 %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @location.city %>
-</p>
-
-<p>
-  <strong>County:</strong>
-  <%= @location.county %>
-</p>
-
-<p>
-  <strong>Postcode:</strong>
-  <%= @location.postcode %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @location.country %>
-</p>
+<div class="table-responsive">
+  <table class="table ">
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Address 1:</td>
+        <td><%= @location.address_1 %></td>
+        <td>County:</td>
+        <td><%= @location.county %></td>
+      </tr>
+      <tr>
+        <td>Address 2:</td>
+        <td><%= @location.address_2 %></td>
+        <td>Postcode:</td>
+        <td><%= @location.postcode %></td>
+      </tr>
+      <tr>
+        <td>City:</td>
+        <td><%= @location.city %></td>
+        <td>Country:</td>
+        <td><%= @location.country %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
