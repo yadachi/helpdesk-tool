@@ -8,7 +8,14 @@ class ReportingsController < ApplicationController
     if params[:company_id] && params[:month]
       @reportings.company_id = params[:company_id]
       @reportings.month = params[:month].to_date
-      @reportings.issues = Issue.includes(:activities).where(company_name: params[:company_id])
+
+      # Get Report Data
+      t_issue = Issue.arel_table
+      t_activity = Activity.arel_table
+      issue_ids = Issue.select("id").where(company_name: params[:company_id])
+
+      @reportings.issues = Issue.where(company_name: params[:company_id])
+
     end
 
   end
