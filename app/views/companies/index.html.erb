@@ -10,6 +10,7 @@
 
   <div class="row">
     <div class="col-lg-6">
+      <%= link_to 'New Company', new_company_path, remote: true, class: "btn btn-default" %>
       <button class="btn btn-default" data-toggle="modal" data-target="#companyModal">
         <i class="fa fa-plus-circle"></i> New Company
       </button>
@@ -45,17 +46,8 @@
                 </tr>
               </thead>
 
-              <tbody>
-                <% @companies.each do |company| %>
-                <tr>
-                  <td><%= link_to company.name, company %></td>
-                  <td><%= company.telephone %></td>
-                  <td><%= company.fax %></td>
-                  <td><%= company.is_deleted %></td>
-                  <td><%= link_to content_tag(:i, " Edit", class: "fa fa-edit"), edit_company_path(company) %></td>
-                  <td><%= link_to content_tag(:i, ' Destroy', class: "fa fa-times"), company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  <% end %>
-                </tr>
+              <tbody class="company-index">
+                <%= render "index" %>
               </tbody>
             </table> 
           </div>
@@ -64,7 +56,12 @@
     </div>
   </div>
 </div>
-  <%= render 'form' %>
+
+<div class="modal" id="company-modal" tabindex="-1" role="dialog" aria-labelledby="companyModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div id="inner-company-modal" class="modal-content"></div> 
+  </div>
+</div>
 
 
 
