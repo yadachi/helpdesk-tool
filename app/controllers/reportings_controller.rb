@@ -10,9 +10,19 @@ class ReportingsController < ApplicationController
       @reportings.month = params[:month].to_date
 
       # Get Report Data
-      t_issue = Issue.arel_table
-      t_activity = Activity.arel_table
-      issue_ids = Issue.select("id").where(company_name: params[:company_id])
+      @reportings.activities =
+      Activity.find_by_sql(
+        ['SELECT * FROM activities
+          WHERE date_time
+          BETWEEN ? and ?
+          AND issue_id in (
+            SELECT id FROM issues WHERE company_name = ?
+          )',
+          params[:month].to_date.beginning_of_month,
+          params[:month].to_date.end_of_month,
+          params[:company_id]
+        ]
+      )
 
       @reportings.issues = Issue.where(company_name: params[:company_id])
 
