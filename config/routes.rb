@@ -14,7 +14,7 @@ root 'dashboard#index'
   resources :issues, :activities
 
 # Sales Functions
-  resources :analysis, :reporting
+  resources :analysis, :reportings
 
 # Administration/Maintenance Functions
   resources :maintenance
