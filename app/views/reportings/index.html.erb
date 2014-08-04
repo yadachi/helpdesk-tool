@@ -1,0 +1,213 @@
+<div id="page-wrapper">
+
+	<!-- Page Header -->
+	<div class="row">
+		<div class="col-lg-12">
+			<h1>Reporting Menu</h1>
+			<ol class="breadcrumb">
+				<li class="active"><i class="fa fa-file-text-o"></i> Reporting Menu</li>
+			</ol>
+			<!-- alerts here -->
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+
+  <div class="row">
+    <%= form_for(@reportings) do |f| %>
+    <div class="form-inline text-right">
+      <div class="col-lg-12">
+        <%= f.collection_select(:company_id, @companies, :id, :name, { include_blank: "Select Company" }, { class: "form-control" }) %>
+        &nbsp;&nbsp;
+        <%= f.date_select(:month, { discard_day: true }, { class: "form-control" }) %>
+        &nbsp;&nbsp;
+        <%= f.submit("Generate Report", class: "btn btn-default") %>
+      </div><!-- /.col -->
+      <% end %>
+    </div><!-- /.form-inline -->
+  </div><!-- /.row -->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <hr>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <% if @reportings.activities %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-life-saver"></i> Activities</h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table  table-hover table-striped">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Date/Time</th>
+                  <th>Activity Type</th>
+                  <th>Activity Note</th>
+                  <th>Hours</th>
+                  <th>Minutes</th>
+                  <th>Entered By</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @reportings.activities.each do |activity| %>
+                <tr>
+                  <td><%= link_to activity.activity_id, activity %></td>
+                  <td><%= activity.date_time.strftime("%Y-%m-%d %H:%M") %></td>
+                  <td><%= Code.find_by(:codetype => 1, :codekey => activity.activity_type).codevalue %></td>
+                  <td><%= activity.activity_note %></td>
+                  <td><%= activity.hours %></td>
+                  <td><%= activity.minutes %></td>
+                  <td><%= User.find(activity.entered_by).name %></td>
+                  <td><a href="<%= edit_activity_path(activity) %>"><i class="fa fa-edit fa-lg"></i></a></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div><!-- /.col -->
+    <div class="col-lg-12">
+      <% if @reportings.issues %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-tasks"></i> Issues</h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table  table-hover table-striped tablesorter">
+              <thead>
+                <tr>
+                  <th>Company name <i class="fa fa-sort"></i></th>
+                  <th>Summary <i class="fa fa-sort"></i></th>
+                  <th>Received date <i class="fa fa-sort"></i></th>
+                  <th>Due date <i class="fa fa-sort"></i></th>
+                  <th>Status <i class="fa fa-sort"></i></th>
+                  <th>Issue type <i class="fa fa-sort"></i></th>
+                  <th>Assigned to <i class="fa fa-sort"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @reportings.issues.each do |issue| %>
+                <tr>
+                  <td><%= Company.find(issue.company_name).name %></td>
+                  <td><%= link_to issue.summary, issue %></td>
+                  <td><%= issue.received_date.strftime("%Y-%m-%d") %></td>
+                  <td><%= issue.due_date %></td>
+                  <td><%= Code.find_by(:codetype => 2, :codekey => issue.status).codevalue %></td>
+                  <td><%= Code.find_by(:codetype => 3, :codekey => issue.issue_type).codevalue %></td>
+                  <td><%= User.find(issue.assigned_to).name %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width:5px">#</th>
+            <th style="width:40px"></th>
+            <th>Issue/Activity</th>
+            <th>Activity Type</th>
+            <th>Time Cosumed</th>
+            <th>Status</th>
+            <th>Engineer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="info">
+            <td>1</td>
+            <td></td>
+            <td><b>[Issue] Test Server Down</b></td>
+            <td></td>
+            <td><b>40:00</b></td>
+            <td><b>Closed</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>1</td>
+            <td>&nbsp;&nbsp;&nbsp;Server Check at customer site</td>
+            <td>Onsite</td>
+            <td>10:00</td>
+            <td></td>
+            <td>J.Murata</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2</td>
+            <td>&nbsp;&nbsp;&nbsp;Server Check at customer site</td>
+            <td>Onsite</td>
+            <td>10:00</td>
+            <td></td>
+            <td>J.Murata</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>3</td>
+            <td>&nbsp;&nbsp;&nbsp;Server Check at customer site</td>
+            <td>Onsite</td>
+            <td>10:00</td>
+            <td></td>
+            <td>J.Murata</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>4</td>
+            <td>&nbsp;&nbsp;&nbsp;Server Check at customer site</td>
+            <td>Onsite</td>
+            <td>10:00</td>
+            <td></td>
+            <td>J.Murata</td>
+          </tr>
+          <tr class="info">
+            <td>2</td>
+            <td></td>
+            <td><b>[Issue] Outlook not working</b></td>
+            <td></td>
+            <td><b>30:00</b></td>
+            <td><b>Closed</b></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>1</td>
+            <td>&nbsp;&nbsp;&nbsp;PC Check by Go To Assist</td>
+            <td>Remote</td>
+            <td>10:00</td>
+            <td></td>
+            <td>J.Murata</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>2</td>
+            <td>&nbsp;&nbsp;&nbsp;Restarting Server</td>
+            <td>Onsite</td>
+            <td>10:00</td>
+            <td></td>
+            <td>J.Murata</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>3</td>
+            <td>&nbsp;&nbsp;&nbsp;Server Check at customer site</td>
+            <td>Onsite</td>
+            <td>10:00</td>
+            <td></td>
+            <td>J.Murata</td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+</div><!-- /#page-wrapper -->
