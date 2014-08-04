@@ -6,25 +6,41 @@ class ReportingsController < ApplicationController
     @companies = Company.all
 
     if params[:company_id] && params[:month]
+
       @reportings.company_id = params[:company_id]
       @reportings.month = params[:month].to_date
 
       # Get Report Data
-      @reportings.activities =
-      Activity.find_by_sql(
-        ['SELECT * FROM activities
-          WHERE date_time
-          BETWEEN ? and ?
-          AND issue_id in (
-            SELECT id FROM issues WHERE company_name = ?
-          )',
-          params[:month].to_date.beginning_of_month,
-          params[:month].to_date.end_of_month,
-          params[:company_id]
-        ]
-      )
+      @reportings.issues =
+        Issue.find_by_sql(
+          ['SELECT * FROM issues
+            WHERE company_name = ? 
+            AND (
+              status <> ?
+              OR id in (
+                SELECT issue_id FROM activities WHERE date_time BETWEEN ? and ?
+              )
+            )',
+            params[:company_id],
+            2,
+            params[:month].to_date.beginning_of_month,
+            params[:month].to_date.end_of_month
+          ]
+        )
 
-      @reportings.issues = Issue.where(company_name: params[:company_id])
+      @reportings.activities =
+        Activity.find_by_sql(
+          ['SELECT * FROM activities
+            WHERE date_time
+            BETWEEN ? and ?
+            AND issue_id in (
+              SELECT id FROM issues WHERE company_name = ?
+            )',
+            params[:month].to_date.beginning_of_month,
+            params[:month].to_date.end_of_month,
+            params[:company_id]
+          ]
+        )
 
     end
 
