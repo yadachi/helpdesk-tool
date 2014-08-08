@@ -20,6 +20,7 @@ root 'dashboard#index'
   resources :maintenance
   resources :users
   resources :companies do
+    get 'delete'
     resources :locations, :customers
   end
 

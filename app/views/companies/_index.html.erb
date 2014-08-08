@@ -1,0 +1,10 @@
+<% @companies.each do |company| %>
+<tr>
+	<td><%= link_to company.name, company %></td>
+	<td><%= company.telephone %></td>
+	<td><%= company.fax %></td>
+	<td><%= company.is_deleted %></td>
+	<td><%= link_to content_tag(:i, " Edit", class: "fa fa-edit"), edit_company_path(company), remote: true %></td>
+	<td><%= link_to content_tag(:i, ' Destroy', class: "fa fa-times"), company_delete_path(company), remote: true %></td>
+</tr>
+<% end %>
