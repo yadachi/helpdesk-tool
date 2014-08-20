@@ -13,9 +13,10 @@ class CustomersController < ApplicationController
   def show
   end
 
-  # GET /customers/new
+  # GET /customers/newS
   def new
-    @customer = Customer.new
+    @company = Company.find(params[:company_id])
+    @customer = @company.customers.new
   end
 
   # GET /customers/1/edit
@@ -34,7 +35,6 @@ class CustomersController < ApplicationController
       if @customer.save
         format.html { redirect_to @company, notice: "#{@customer.name} was successfully created." }
         format.json { render action: 'show', status: :created, location: @customer }
-        format.js  #create.js.erb
       else
         format.html { render action: 'new' }
         format.json { render json: @customer.errors, status: :unprocessable_entity }

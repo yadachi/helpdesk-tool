@@ -1,33 +1,48 @@
-<div class="modal-body">
+<div id="raw">
+  <div class="col-lg-8">
+    <%= form_for @company, html: {class: "form-horizontal", role: "form"} do |f| %>
+    <% if @company.errors.any? %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+      </button>
+      <strong><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</strong>
 
-  <%= form_for(@company, class: "form-horizontal", role: "form", remote: true ) do |f| %>
-
-  <div class="form-group">
-    <%= f.label :name, class: 'col-sm-3 control-label' %>
-    <div class="col-sm-9">
-      <%= f.text_field :name, class: "form-control" %>
+      <ul>
+        <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :telephone, class: 'col-sm-3 control-label' %>
-    <div class="col-sm-9">
-      <%= f.text_field :telephone, class: "form-control" %>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :name, "Company Name", class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :Fax_number, class: 'col-sm-3 control-label' %>
-    <div class="col-sm-9">
-      <%= f.text_field :fax, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label :telephone, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :telephone, class: "form-control" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-3 col-sm-9">
-      <%= f.check_box :is_deleted %>
-      <%= f.label :Deleted %>           
+    <div class="form-group">
+      <%= f.label :Fax_number, class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :fax, class: "form-control" %>
+      </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <%= f.check_box :is_deleted %>
+        <%= f.label :Deleted %>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <%= link_to 'Cancel', companies_path, class: 'btn btn-default' %>
           <%= f.submit class: "btn btn-primary" %>
+        </div>
+      </div>
     </div>
     <% end %>
   </div>

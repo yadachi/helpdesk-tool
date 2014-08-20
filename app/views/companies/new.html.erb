@@ -1,5 +1,12 @@
-<div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	<h4 class="modal-title" id="company-modal">New Company</h4>
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-10">
+			<h1>Adding New Company</h1>
+			<ol class="breadcrumb">
+				<li><a href='<%= companies_path %>'><i class="fa fa-tasks"></i> Companies</a></li>
+				<li class="active"><i class="fa fa-edit"></i> Adding New Company</li>
+			</ol>
+				<%= render 'form' %>
+		</div>
+	</div>
 </div>
-	<%= render 'form' %>

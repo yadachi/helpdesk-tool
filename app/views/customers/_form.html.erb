@@ -1,58 +1,60 @@
-<div class="row">
-  <div class="modal" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModal" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="customerModal">New Customer</h4>
-        </div>
-        <div class="modal-body">
+<div id="raw">
+  <div class="col-lg-8">
+   <%= form_for [@company, @customer], class: "form-horizontal", role: "form" do |f| %>
+    <% if @company.errors.any? %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+      </button>
+      <strong><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</strong>
 
-          <%= form_for([@company, Customer.new], remote: true, class: "form-horizontal", role: "form") do |f| %>
-          
-          <div class="form-group">
-            <%= f.label :title, class: 'col-sm-3 control-label' %>
-            <div class="col-sm-9">
-              <%= f.text_field :title, class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= f.label :name, class: 'col-sm-3 control-label' %>
-            <div class="col-sm-9">
-              <%= f.text_field :name, class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= f.label :direct_number, class: 'col-sm-3 control-label' %>
-            <div class="col-sm-9">
-              <%= f.text_field :direct_number, class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= f.label :email, class: 'col-sm-3 control-label' %>
-            <div class="col-sm-9">
-              <%= f.text_field :email, class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= f.label :location_id, class: 'col-sm-3 control-label' %>
-            <div class="col-sm-9">
-              <%= f.collection_select :location_id, Location.all, :id, :name, prompt: "Select location of office", class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-9">
-              <%= f.check_box :main_contact %>
-              <%= f.label :main_contact %>           
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-              <%= f.submit class: "btn btn-primary" %>
-          </div>
-          <% end %>
-        </div>
-      </div>
+      <ul>
+        <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
+    <% end %>
+
+
+<div class="form-group">
+  <%= f.label :title, class: 'col-sm-3 control-label' %>
+  <div class="col-sm-9">
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 </div>
+<div class="form-group">
+  <%= f.label :name, class: 'col-sm-3 control-label' %>
+  <div class="col-sm-9">
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :direct_number, class: 'col-sm-3 control-label' %>
+  <div class="col-sm-9">
+    <%= f.text_field :direct_number, class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :email, class: 'col-sm-3 control-label' %>
+  <div class="col-sm-9">
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :location_id, class: 'col-sm-3 control-label' %>
+  <div class="col-sm-9">
+    <%= f.collection_select :location_id, Location.all, :id, :name, prompt: "Select location of office", class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-3 col-sm-9">
+    <%= f.check_box :main_contact %>
+    <%= f.label :main_contact %>           
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+  <%= f.submit class: "btn btn-primary" %>
+</div>
+<% end %>
+
