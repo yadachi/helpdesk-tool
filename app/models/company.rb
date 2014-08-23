@@ -3,6 +3,7 @@ class Company < ActiveRecord::Base
 	has_many :locations
 
 	validates :name, presence: true, uniqueness: true
+	validates :telephone, length: {minimum: 11}
 
 	def self.search(search)
   	if search
