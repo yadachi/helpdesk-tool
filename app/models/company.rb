@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
 	has_many :customers
 	has_many :locations
+	has_many :issues
 
 	validates :name, presence: true, uniqueness: true
 	validates :telephone, length: {minimum: 11}
