@@ -31,7 +31,7 @@ Company.transaction do
 	Company.delete_all
 	Company.connection.execute("ALTER TABLE companies AUTO_INCREMENT = 1")
 
-	Company.create(:name => "SCSK", :telephone => "012-3456-7890", :fax => "012-3456-0987", :is_deleted => 0)
+	Company.create(:name => "Ruby ruby", :telephone => "012-3456-7890", :fax => "012-3456-0987", :is_deleted => 0)
 	Company.create(:name => "Hoge Company", :telephone => "012-3456-7890", :fax => "012-3456-0987", :is_deleted => 0)
 	Company.create(:name => "Rails Club", :telephone => "012-3456-7890", :fax => "012-3456-0987", :is_deleted => 0)
 	Company.create(:name => "MCP", :telephone => "012-3456-7890", :fax => "012-3456-0987", :is_deleted => 0)
@@ -43,10 +43,10 @@ Location.transaction do
 	Location.delete_all
 	Location.connection.execute("ALTER TABLE locations AUTO_INCREMENT = 1")
 
-	Location.create(:company_id => 1, :name => "Toyosu Head Office", :address_1 => "1-2-3 Toyosu", :address_2 => "Koto-ku", :city => "TOKYO", :county => "", :postcode => "123-1234", :country => "JAPAN")
+	Location.create(:company_id => 1, :name => "Japan Head Office", :address_1 => "1-2-3 ruby kaigi", :address_2 => "ruby-kaigi", :city => "TOKYO", :county => "", :postcode => "123-1234", :country => "JAPAN")
 	Location.create(:company_id => 2, :name => "Head Office", :address_1 => "1-2-3 Hoge", :address_2 => "Hoge", :city => "Hoge", :county => "Hoge", :postcode => "123-1234", :country => "HOGE")
 	Location.create(:company_id => 3, :name => "Head Office", :address_1 => "320 Rails", :address_2 => "Matsue-shi", :city => "SHIMANE", :county => "", :postcode => "123-1234", :country => "JAPAN")
-	Location.create(:company_id => 4, :name => "Head Office", :address_1 => "1-2-3 Matsumoto", :address_2 => "Fuji-shi", :city => "SHIZUOKA", :county => "", :postcode => "123-1234", :country => "JAPAN")
+	Location.create(:company_id => 4, :name => "Head Office", :address_1 => "1-2-3 Matsumoto", :address_2 => "Zao-shi", :city => "Yamagata", :county => "", :postcode => "123-1234", :country => "JAPAN")
 	Location.create(:company_id => 5, :name => "Head Office", :address_1 => "1601 Amphitheatre Parkway", :address_2 => "Mountain View", :city => "California", :county => "", :postcode => "94043", :country => "USA")
 end
 
@@ -58,8 +58,8 @@ Customer.transaction do
 	Customer.create(:company_id => 1, :location_id => 1, :title => "Mr", :name => "Taro Yamada", :direct_number => "1234", :email => "hogehoge@example.com", :main_contact => 1)
 	Customer.create(:company_id => 2, :location_id => 2, :title => "Dr", :name => "Hoge Hoge", :direct_number => "1234", :email => "hogehoge@example.com", :main_contact => 1)
 	Customer.create(:company_id => 3, :location_id => 3, :title => "Mr", :name => "God of Rails", :direct_number => "1234", :email => "hogehoge@example.com", :main_contact => 1)
-	Customer.create(:company_id => 4, :location_id => 4, :title => "Mr", :name => "Shigekazu Murata", :direct_number => "1234", :email => "hogehoge@example.com", :main_contact => 1)
-	Customer.create(:company_id => 5, :location_id => 5, :title => "Mr", :name => "Junichiro Murata", :direct_number => "1234", :email => "hogehoge@example.com", :main_contact => 1)
+	Customer.create(:company_id => 4, :location_id => 4, :title => "Mr", :name => "Yukihiro Matz", :direct_number => "1234", :email => "hogehoge@example.com", :main_contact => 1)
+	Customer.create(:company_id => 5, :location_id => 5, :title => "Mr", :name => "John Doe", :direct_number => "1234", :email => "hogehoge@example.com", :main_contact => 1)
 end
 
 # Test Records for User
